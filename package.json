@@ -7,8 +7,8 @@
   "scripts": {
     "backend:build": "node app.js",
     "backend:dev": "nodemon app.js",
-    "frontend:dev": "webpack serve --progress --config webpack.config.development.js",
-    "frontend:build": "webpack --progress --config webpack.config.build.js",
+    "frontend:dev": "webpack serve --config webpack.config.development.js",
+    "frontend:build": "webpack --config webpack.config.build.js",
     "start": "concurrently --kill-others \"yarn run backend:dev\" \"yarn run frontend:dev\""
   },
   "devDependencies": {
