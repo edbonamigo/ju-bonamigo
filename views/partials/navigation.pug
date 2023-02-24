@@ -1,13 +1,12 @@
 nav.navigation
   .navigation__wrapper 
-    a.navigation__link(href="/")
-      | Ju Bonamigo - Fotografia
-
-      svg.navigation__link__icon
-
     ul.navigation__list
-      li.navigation__list__item 
-        a.navigation__list__link(href="/ensaios") Ensaios
+      li
+        a.navigation__list__link.--logo(href="/")=home.data.title
+      li
+        a.navigation__list__link.--niche(href="/:nicho") :Nicho
+      li
+        a.navigation__list__link.--photoshoot(href=":nicho/:ensaio") :Ensaio
 
-      li.navigation__list__item 
-        a.navigation__list__link(href="/ensaio") Ensaio
+    a.navigation__link(href="#Contato") Contato
+    a.navigation__link(href="#") Voltar

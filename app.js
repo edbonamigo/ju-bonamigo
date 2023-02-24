@@ -5,8 +5,22 @@ const port = process.env.PORT
 import app from './app-config.js'
 import client from './app-client-config.js'
 
-app.get('/', (req, res) => {
-  res.render('pages/home')
+app.use(async (req, res, next) => {
+  const meta = await client.getSingle('metadata')
+  res.locals.defaults = { meta }
+
+  console.log(meta)
+
+  next()
+})
+
+app.get('/', async (req, res) => {
+  const home = await client.getSingle('home')
+
+  res.render('pages/home', {
+    ...res.locals.defaults,
+    home,
+  })
 })
 
 // página de ensaiors, ex ensaios/femininos ou ensaios/empresas

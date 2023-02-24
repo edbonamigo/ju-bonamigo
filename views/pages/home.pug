@@ -4,4 +4,12 @@ block variables
   - var template = 'home'
 
 block content
-  h1.home__title Home
+  section.hero
+    .title__wrapper
+      h1.home__title=home.data.title
+      h2.home__title=home.data.subtitle
+  
+  section.niches
+  section.parallax
+  section.about
+  section.contact

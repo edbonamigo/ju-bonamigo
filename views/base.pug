@@ -1,14 +1,15 @@
 block variables
 doctype html 
 
-html(lang="en")
+html(lang="pt-br")
   head 
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     
     base(href="/")
-    title Ju Bonamigo - Fotografia
-    meta(name="description" content="Fotografo tudo aquilo que fazem meus olhos brilharem. Ensaios femininos, fotos comerciais e eventos. Santo Antônio da Patrulha, Porto Alegre, Região Metropolitana e litotal.")
+    title=meta.data.title
+    meta(name="description" content=meta.data.description)
+    meta(name="keywords" content=meta.data.keywords)
     
     //- generated with https://realfavicongenerator.net/
     //- link(rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon.png")
@@ -32,8 +33,10 @@ html(lang="en")
     link(href="main.css" rel="stylesheet")
 
   body 
-    include ./partials/preloader
+    include ./partials/preloading
     include ./partials/navigation
 
     .content#content(data-template=template)
       block content
+
+    include ./partials/footer
