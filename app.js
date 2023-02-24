@@ -9,17 +9,18 @@ app.use(async (req, res, next) => {
   const meta = await client.getSingle('metadata')
   res.locals.defaults = { meta }
 
-  console.log(meta)
-
   next()
 })
 
 app.get('/', async (req, res) => {
   const home = await client.getSingle('home')
+  const niches = await client.getAllByType('niche')
 
   res.render('pages/home', {
     ...res.locals.defaults,
     home,
+    niches,
+    random: Math.floor(Math.random() * home.data.images.length),
   })
 })
 
@@ -34,5 +35,5 @@ app.get('/ensaio', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Exemple app listening at http://localhost:${port}`)
+  console.log(`--------> App listening at http://localhost:${port}`)
 })
