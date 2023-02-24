@@ -1,13 +1,9 @@
-import express from 'express'
-import path from 'path'
-import { fileURLToPath } from 'url'
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+import dotenv from 'dotenv'
+dotenv.config()
+const port = process.env.PORT
 
-const app = express()
-const port = 3000
-
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'pug')
+import app from './app-config.js'
+import client from './app-client-config.js'
 
 app.get('/', (req, res) => {
   res.render('pages/home')
