@@ -33,10 +33,11 @@ html(lang="pt-br")
     link(href="main.css" rel="stylesheet")
 
   body 
+
     include ./partials/preloading
     include ./partials/navigation
 
     .content#content(data-template=template)
       block content
-
+    
     include ./partials/footer

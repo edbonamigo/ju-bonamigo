@@ -1,0 +1,32 @@
+extends ../base.pug
+
+block variables
+	- var template = 'photoshoot'
+
+block content
+	article.photoshoot
+		.photoshoot__wrapper
+			
+			section.photoshoot__hero
+				.photoshoot__hero__title-wrapper
+					h1.photoshoot__hero__title=photoshoot.data.title
+					
+				.photoshoot__hero__image-wrapper
+					img(src=mainImage.url alt=mainImage.alt)
+
+			each slice in photoshoot.data.body
+				if slice.slice_type == 'grid_imagens'
+					section.photoshoot__grid
+						each media in slice.items
+							figure.photoshoot__grid__image-wrapper
+								img.photoshoot__grid__image(src=media.imagem1.url alt=media.imagem1.alt)
+			
+				if slice.slice_type == 'imagem_destaque'
+					section.photoshoot__full
+						each media in slice.items
+							figure.photoshoot__full__image-wrapper
+								img.photoshoot__full__image(src=media.image.url alt=media.image.alt)
+
+			a(href="#")
+				| Mais Ensaios 
+			
