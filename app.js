@@ -35,7 +35,20 @@ app.get('/', async (req, res) => {
 	})
 })
 
-// página do ensaio, ex ensaio/janete ou ensaio/kallango
+app.get('/:niche', async (req, res) => {
+  const uid = req.params.niche
+  const niches = await client.getAllByType('niche', {
+		fetchLinks: 'photoshoot.title',
+	})
+
+  res.render('pages/niche', {
+		...res.locals.defaults,
+    niches,
+    uid
+	})
+})
+ 
+
 app.get('/:niche/:uid', async (req, res) => {
 	const photoshoot = await client.getByUID('photoshoot', req.params.uid)
   const niche = await client.getByUID('niche', req.params.niche, {
@@ -48,9 +61,6 @@ app.get('/:niche/:uid', async (req, res) => {
       mainImage = i.image
     }
   })
-  
-  console.log(photoshoot.data.body[1])
-  console.log(photoshoot.data.body[1].items[0])
 
 	res.render('pages/photoshoot', {
 		...res.locals.defaults,

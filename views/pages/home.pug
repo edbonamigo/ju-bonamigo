@@ -12,21 +12,21 @@ block content
 			.hero__image
 				img.hero__image__img(src=home.data.images[random].image.url, alt=home.data.images[random].image.alt)
 
-	section.niche
-		.niche__wrapper
+	section.niches
+		.niches__wrapper
 			each niche in niches
 				if niche.data.photoshoots[0].title
-					ul.niche__gallery(id=niche.slugs[0])
-						h3.niche__gallery__title=niche.data.title
+					ul.niches__gallery(id=niche.slugs[0])
+						a.niches__gallery__link(href=`/${niche.uid}`)
+							h3.niches__gallery__title=niche.data.title
 
-						each photoshoot in niche.data.photoshoots
-								li.niche__photoshoot
-									a.niche__photoshoot__link(href=`${niche.uid}/${photoshoot.photoshoot.uid}`)
+							each photoshoot in niche.data.photoshoots
+									li.niches__photoshoot
 										if photoshoot.title
-											h6.niche__photoshoot__title=photoshoot.title
+											h6.niches__photoshoot__title=photoshoot.title
 
-										.niche__photoshoot__image
-											img.niche__photoshoot__image__img(src=photoshoot.image.url alt=photoshoot.image.alt)
+										.niches__photoshoot__image
+											img.niches__photoshoot__image__img(src=photoshoot.image.url alt=photoshoot.image.alt)
 
 	section.parallax
 		.parallax__wrapper

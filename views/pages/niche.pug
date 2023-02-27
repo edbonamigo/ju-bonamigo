@@ -1,0 +1,23 @@
+extends ../base.pug
+
+block variables
+	- var template = 'niche'
+
+block content
+	section.niche
+		.niche__wrapper
+			each niche in niches
+				if niche.uid == uid
+
+					ul.niche__gallery(id=niche.uid)
+						h3.niche__gallery__title=niche.data.title
+
+						each photoshoot in niche.data.photoshoots
+								li.niche__photoshoot
+									a.niche__photoshoot__link(href=`/${niche.uid}/${photoshoot.photoshoot.uid}`)
+										if photoshoot.title
+											h6.niche__photoshoot__title=photoshoot.data.title
+
+										.niche__photoshoot__image
+											img.niche__photoshoot__image__img(src=photoshoot.image.url alt=photoshoot.image.alt)
+					
