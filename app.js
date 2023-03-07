@@ -1,9 +1,9 @@
 import dotenv from 'dotenv'
 dotenv.config()
-const port = process.env.PORT
 
 import app from './app-config.js'
 import client from './app-client-config.js'
+const port = process.env.PORT
 
 app.use(async (req, res, next) => {
 	const home = await client.getSingle('home')
@@ -36,37 +36,36 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/:niche', async (req, res) => {
-  const uid = req.params.niche
-  const niches = await client.getAllByType('niche', {
+	const uid = req.params.niche
+	const niches = await client.getAllByType('niche', {
 		fetchLinks: 'photoshoot.title',
 	})
 
-  res.render('pages/niche', {
+	res.render('pages/niche', {
 		...res.locals.defaults,
-    niches,
-    uid
+		niches,
+		uid,
 	})
 })
- 
 
 app.get('/:niche/:uid', async (req, res) => {
 	const photoshoot = await client.getByUID('photoshoot', req.params.uid)
-  const niche = await client.getByUID('niche', req.params.niche, {
+	const niche = await client.getByUID('niche', req.params.niche, {
 		fetchLinks: 'photoshoot.uid',
 	})
-  let mainImage;
+	let mainImage
 
-  niche.data.photoshoots.forEach(i => {
-    if (i.photoshoot.data.uid == req.params.uid) {
-      mainImage = i.image
-    }
-  })
+	niche.data.photoshoots.forEach((i) => {
+		if (i.photoshoot.data.uid == req.params.uid) {
+			mainImage = i.image
+		}
+	})
 
 	res.render('pages/photoshoot', {
 		...res.locals.defaults,
-    niche,
+		niche,
 		photoshoot,
-    mainImage
+		mainImage,
 	})
 })
 

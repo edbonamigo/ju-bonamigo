@@ -10,6 +10,13 @@ const configDev = merge(config, {
 
   devtool: 'inline-source-map',
 
+  devServer: {
+		devMiddleware: {
+			publicPath: '/public',
+			writeToDisk: true,
+		},
+	},
+
   output: {
     path: path.resolve(__dirname, 'public'),
   },
