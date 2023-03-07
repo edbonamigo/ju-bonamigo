@@ -6,20 +6,20 @@ import { merge } from 'webpack-merge'
 import config from './webpack.config.js'
 
 const configDev = merge(config, {
-  mode: 'development',
+	mode: 'development',
 
-  devtool: 'inline-source-map',
+	devtool: 'inline-source-map',
 
-  devServer: {
+	devServer: {
 		devMiddleware: {
 			publicPath: '/public',
 			writeToDisk: true,
 		},
 	},
 
-  output: {
-    path: path.resolve(__dirname, 'public'),
-  },
+	output: {
+		path: path.resolve(__dirname, 'public'),
+	},
 })
 
 export default configDev

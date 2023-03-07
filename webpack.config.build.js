@@ -6,11 +6,11 @@ import { merge } from 'webpack-merge'
 import config from './webpack.config.js'
 
 const configBuild = merge(config, {
-  mode: 'production',
+	mode: 'production',
 
-  output: {
-    path: path.join(__dirname, 'public'),
-  },
+	output: {
+		path: path.join(__dirname, 'public'),
+	},
 })
 
 export default configBuild

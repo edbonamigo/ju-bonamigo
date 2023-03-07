@@ -8,6 +8,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import ImageMinimizerPlugin from 'image-minimizer-webpack-plugin'
 import TerserPlugin from 'terser-webpack-plugin'
+import sass from 'sass'
 
 const IS_DEVELOPMENT = process.env.NOVE_ENV === 'dev'
 
@@ -38,6 +39,7 @@ const config = {
 				{
 					from: './assets',
 					to: '',
+					noErrorOnMissing: true,
 				},
 			],
 		}),
@@ -56,30 +58,25 @@ const config = {
 				},
 			},
 			{
-				test: /\.(sa|sc|c)ss$/,
+				test: /\.scss$/,
+				exclude: /node_modules/,
 				use: [
 					{
 						loader: MiniCssExtractPlugin.loader,
-						options: {
-							publicPath: '',
-						},
 					},
 					{
 						loader: 'css-loader',
 						options: {
-							sourceMap: false,
+							url: false,
 						},
 					},
 					{
 						loader: 'postcss-loader',
-						options: {
-							sourceMap: false,
-						},
 					},
 					{
 						loader: 'sass-loader',
 						options: {
-							sourceMap: false,
+							implementation: sass,
 						},
 					},
 				],
@@ -89,7 +86,7 @@ const config = {
 				loader: 'file-loader',
 				options: {
 					name(file) {
-						return '[hash].[ext]'
+						return '[name].[ext]'
 					},
 				},
 			},
