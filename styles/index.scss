@@ -1,0 +1,25 @@
+@import './base/reset.scss';
+
+@import './utils/variables.scss';
+@import './utils/functions.scss';
+@import './utils/mixins.scss';
+@import './utils/responsive.scss';
+
+@import './common/titles.scss';
+
+@import './base/fonts.scss';
+@import './base/base.scss';
+
+@import './components/footer.scss';
+@import './components/navigation.scss';
+@import './components/preloader.scss';
+
+@import './pages/home/about';
+@import './pages/home/contact';
+@import './pages/home/home';
+@import './pages/home/niches';
+@import './pages/home/parallax';
+
+@import './pages/niches/niches';
+
+@import './pages/photoshoot/photoshoot';
