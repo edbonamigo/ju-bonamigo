@@ -10,7 +10,7 @@ import bodyParser from 'body-parser'
 import methodOverride from 'method-override'
 import errorHandler from 'errorhandler'
 import * as prismicH from '@prismicio/helpers'
-import { keepNumbers } from './utils/sanitize.js'
+import { keepNumbers } from './app/utils/sanitize.js'
 
 const app = express()
 const port = process.env.PORT
@@ -32,11 +32,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(errorHandler())
 
 app.use((req, res, next) => {
-  res.locals = {
-    prismicH,
-    keepNumbers,
-  }
-  next()
+	res.locals = {
+		prismicH,
+		keepNumbers,
+	}
+	next()
 })
 
 export default app
