@@ -4,16 +4,16 @@ block variables
 	- var template = 'home'
 
 block content
-	section.hero
-		.hero__wrapper
-			.hero__title
+	section.home
+		.home_wrapper
+			.home__title_wrapper
 				h1.home__title=home.data.title
-				h2.home__title=home.data.subtitle
-			.hero__image
-				img.hero__image__img(src=home.data.images[random].image.url, alt=home.data.images[random].image.alt)
+				h2.home__subtitle=home.data.subtitle
+			.home__image
+				img.home__image__img(src=home.data.images[random].image.url, alt=home.data.images[random].image.alt)
 
 	section.niches
-		.niches__wrapper
+		.niches_wrapper
 			each niche in niches
 				if niche.data.photoshoots[0].title
 					ul.niches__gallery(id=niche.slugs[0])
@@ -29,25 +29,25 @@ block content
 											img.niches__photoshoot__image__img(src=photoshoot.image.url alt=photoshoot.image.alt)
 
 	section.parallax
-		.parallax__wrapper
+		.parallax_wrapper
 			each item in home.data.images.sort((a,b)=>{return Math.random()-0.5})
 				.parallax__image  
 					img.parallax__image__img(src=item.image.url alt=item.image.alt)
 
 	section.about
-		.about__wrapper
+		.about_wrapper
 			.about__image
-				.about__image__wrapper
+				.about__image_wrapper
 					img.about__image__img(src=home.data.image.url alt=home.data.image.alt)
 			.about__text!=prismicH.asHTML(home.data.about)
 
 	section.contact
-		.contact__wrapper 
+		.contact_wrapper 
 			a.contact__social-media(href=home.data.social_media_link.url)
 				h4.contact__social-media__title=home.data.social_media_title
-				h5.contact__social-media__title=home.data.social_media_user
+				h5.contact__social-media__user=home.data.social_media_user
 
 			a.contact__phone(href=`tel:${keepNumbers(home.data.phone_number)}`)
 				h4.contact__phone__title=home.data.phone_title
-				h5.contact__phone__title=home.data.phone_number
+				h5.contact__phone__number=home.data.phone_number
 
