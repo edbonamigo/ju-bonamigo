@@ -14,13 +14,15 @@ html {
 }
 
 body {
-	// @extend %description-16;
+	font-size: 3rem;
 	font-family: $font-primary;
 	background: $color-cloud;
 	color: $color-millbrook;
+	user-select: none;
 }
 
 .content {
+	opacity: 1;
 }
 
 a {
@@ -39,4 +41,5 @@ button {
 
 img {
 	vertical-align: middle;
+	z-index: 1;
 }

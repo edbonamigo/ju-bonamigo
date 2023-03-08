@@ -1,8 +1,31 @@
+body.--preloader {
+	overflow: hidden;
+
+	.preloader {
+		opacity: 1;
+	}
+}
+
 .preloader {
+	@extend %cover;
+	@extend %flex-center;
+
+	opacity: 0;
+	background: $color-cloud;
+	align-items: center;
+	text-align: center;
+	z-index: z('preloader');
 }
 
 .preloader__text {
+	@extend %text-30;
 }
 
 .preloader__number {
+	@extend %text-20;
+
+	position: absolute;
+	left: 48%;
+	bottom: 7rem;
+	transform: translateX(-50%);
 }

@@ -1,18 +1,18 @@
-@import './base/reset.scss';
+// @import './base/reset.scss'; > reset.pug
 
 @import './utils/variables.scss';
 @import './utils/functions.scss';
 @import './utils/mixins.scss';
 @import './utils/responsive.scss';
 
-@import './common/titles.scss';
+@import './common/typography.scss';
 
-@import './base/fonts.scss';
+// @import './base/fonts.scss'; > critical-styles.pug
 @import './base/base.scss';
 
 @import './components/footer.scss';
 @import './components/navigation.scss';
-@import './components/preloader.scss';
+// @import './components/preloader.scss'; > critical-styles.pug
 
 @import './pages/home/about';
 @import './pages/home/contact';

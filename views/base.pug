@@ -32,7 +32,11 @@ html(lang="pt-br")
 
     link(href="main.css" rel="stylesheet")
 
-  body 
+    include ./components/reset
+    include ./components/critical-styles
+
+  //- body
+  body(class="--preloader")
 
     include ./components/preloader
     include ./components/navigation
