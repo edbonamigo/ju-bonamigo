@@ -1,3 +1,4 @@
+$color-spring-wood: #fcfbf8;
 $color-dawn-pink: #f2ebe1;
 $color-millbrook: #5b402f;
 $color-cloud: #cdc9c4;
@@ -6,4 +7,4 @@ $font-primary: 'Branch';
 
 $ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
-$z-indexes: ('noise', 'preloader', 'navigation', 'content');
+$z-indexes: ('preloader', 'navigation', 'titles', 'noise', 'content');

@@ -1,11 +1,24 @@
 .parallax {
+	width: 100vw;
+	height: 200vh;
+	position: relative;
 }
 
-.parallax_wrapper {
+.parallax__image_wrapper {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	&:nth-child(2) {
+		top: 50vh;
+	}
+	&:nth-child(3) {
+		top: 100vh;
+	}
 }
 
 .parallax__image {
-}
-
-.parallax__image__img {
+	@extend %cover;
 }

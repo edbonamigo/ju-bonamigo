@@ -5,49 +5,45 @@ block variables
 
 block content
 	section.home
-		.home_wrapper
-			.home__title_wrapper
-				h1.home__title=home.data.title
-				h2.home__subtitle=home.data.subtitle
-			.home__image
-				img.home__image__img(src=home.data.images[random].image.url, alt=home.data.images[random].image.alt draggable="false")
+		.home__title_wrapper
+			h1.home__title=home.data.title
+			h2.home__subtitle=home.data.subtitle
+		.home__image
+			img.home__image__img(src=home.data.images[random].image.url, alt=home.data.images[random].image.alt draggable="false")
 
 	section.niches
-		.niches_wrapper
 			each niche in niches
 				if niche.data.photoshoots[0].title
-					ul.niches__gallery(id=niche.slugs[0])
-						a.niches__gallery__link(href=`/${niche.uid}` draggable="false")
-							h3.niches__gallery__title=niche.data.title
-
-							each photoshoot in niche.data.photoshoots
-									li.niches__photoshoot
-										if photoshoot.title
-											h6.niches__photoshoot__title=photoshoot.title
-
-										.niches__photoshoot__image
-											img.niches__photoshoot__image__img(src=photoshoot.image.url alt=photoshoot.image.alt draggable="false")
+					.niches__gallery_wrapper(id=niche.uid)
+						a.niches__gallery(href=`/${niche.uid}` id=niche.slugs[0] draggable="false")
+							h3.niches__gallery__title
+								each title in niche.data.title.split(' ')
+									span=title
+							ul.niches__gallery__images
+								each photoshoot in niche.data.photoshoots
+									figure.niches__gallery__image_wrapper
+										img.niches__gallery__image(src=photoshoot.image.url alt=photoshoot.image.alt draggable="false")
 
 	section.parallax
-		.parallax_wrapper
-			each item in home.data.images.sort((a,b)=>{return Math.random()-0.5})
-				.parallax__image  
-					img.parallax__image__img(src=item.image.url alt=item.image.alt draggable="false")
+		each item in home.data.images.sort((a,b)=>{return Math.random()-0.5}).slice(0,3)
+			.parallax__image_wrapper
+				img.parallax__image(src=item.image.url alt=item.image.alt draggable="false")
 
 	section.about
-		.about_wrapper
-			.about__image
-				.about__image_wrapper
-					img.about__image__img(src=home.data.image.url alt=home.data.image.alt draggable="false")
-			.about__text!=prismicH.asHTML(home.data.about)
+		figure.about__image_wrapper
+			img.about__image(src=home.data.image.url alt=home.data.image.alt draggable="false")
+		.about__text!=prismicH.asHTML(home.data.about)
 
-	section.contact
-		.contact_wrapper 
-			a.contact__social-media(href=home.data.social_media_link.url draggable="false")
-				h4.contact__social-media__title=home.data.social_media_title
-				h5.contact__social-media__user=home.data.social_media_user
+	section.contact(id='contato')
+		a.contact__link(href=home.data.social_media_link.url draggable="false")
+			.contact__link__title_wrapper
+				h4.contact__link__title=home.data.social_media_title
+			.contact__link__text_wrapper
+				h5.contact__link__text=home.data.social_media_user
 
-			a.contact__phone(href=`tel:${keepNumbers(home.data.phone_number)}` draggable="false")
-				h4.contact__phone__title=home.data.phone_title
-				h5.contact__phone__number=home.data.phone_number
+		a.contact__link(href=`tel:${keepNumbers(home.data.phone_number)}` draggable="false")
+			.contact__link__title_wrapper
+				h4.contact__link__title=home.data.phone_title
+			.contact__link__text_wrapper
+				h5.contact__link__text=home.data.phone_number
 

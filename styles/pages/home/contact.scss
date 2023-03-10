@@ -1,23 +1,44 @@
 .contact {
+	@extend %flex-center;
+	flex-flow: column;
+	justify-content: center;
+
+	width: 100vw;
+	height: 100vh;
 }
 
-.contact_wrapper {
+.contact__link {
+	margin-bottom: 2rem;
+
+	&:first-child {
+		.contact__link__title_wrapper {
+			transform: translateX(-10rem);
+		}
+		.contact__link__text_wrapper {
+			transform: translateX(-4rem);
+		}
+	}
+
+	&:last-child {
+		.contact__link__title_wrapper {
+			transform: translateX(1rem);
+		}
+		.contact__link__text_wrapper {
+			transform: translateX(13rem);
+		}
+	}
 }
 
-.contact__social-media {
+.contact__link__title_wrapper {
+	mix-blend-mode: screen;
 }
 
-.contact__social-media__title {
+.contact__link__title {
+	@extend %text-200;
 }
 
-.contact__social-media__user {
-}
-
-.contact__phone {
-}
-
-.contact__phone__title {
-}
-
-.contact__phone__number {
+.contact__link__text {
+	@extend %text-75;
+	color: $color-millbrook;
+	transform: translateY(-25%);
 }

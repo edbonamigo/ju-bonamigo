@@ -20,6 +20,11 @@
 	transform: translate(-50%, -50%);
 }
 
+%section-space {
+	width: 100vw;
+	padding: 30rem 3rem;
+}
+
 @mixin placeholder {
 	&.placeholder {
 		@content;

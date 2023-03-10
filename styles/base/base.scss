@@ -19,6 +19,7 @@ body {
 	background: $color-cloud;
 	color: $color-millbrook;
 	user-select: none;
+	position: relative;
 }
 
 .content {
@@ -26,6 +27,7 @@ body {
 }
 
 a {
+	display: block;
 	color: inherit;
 	text-decoration: none;
 	outline: none;
@@ -41,5 +43,5 @@ button {
 
 img {
 	vertical-align: middle;
-	z-index: 1;
+	z-index: z('content');
 }

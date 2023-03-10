@@ -1,20 +1,21 @@
 .footer {
-}
-
-.footer_wrapper {
+	width: 100vw;
+	padding: 2rem 3rem;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
 }
 
 .footer__author {
+	display: flex;
 }
 
-.footer__author__text {
-}
-
-.footer__author__link {
-}
-
-.footer__copyright {
-}
-
+.footer__author__text,
+.footer__author__link,
 .footer__copyright__text {
+	@extend %text-20;
+	margin-right: 1ch;
 }

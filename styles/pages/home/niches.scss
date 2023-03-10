@@ -1,26 +1,129 @@
 .niches {
+	@extend %section-space;
+	padding-left: 0;
+	padding-right: 0;
 }
 
-.niches_wrapper {
+.niches__gallery_wrapper {
+	height: 100vh;
+	padding: 15vh 0 10vh;
+	width: 100%;
+	margin-bottom: 30rem;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
 .niches__gallery {
-}
-
-.niches__gallery__link {
+	position: relative;
+	height: 100%;
+	min-width: 100%;
 }
 
 .niches__gallery__title {
+	@extend %text-150;
+
+	display: flex;
+	flex-flow: column;
+	position: fixed;
+	left: 15vw;
+	top: 30%;
+	opacity: 0;
+	pointer-events: none;
+	z-index: z('titles');
+
+	span:last-child {
+		margin-left: 25rem;
+	}
 }
 
-.niches__photoshoot {
+.niches__gallery__images {
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
 }
 
-.niches__photoshoot__title {
+.niches__gallery__image_wrapper {
+	height: 100%;
+	position: absolute;
+
+	&:nth-child(1) {
+		transform-origin: right;
+		right: 51%;
+	}
+
+	&:nth-child(2) {
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 2;
+	}
+	&:nth-child(3) {
+		left: 51%;
+	}
 }
 
-.niches__photoshoot__image {
+.niches__gallery__image_wrapper:nth-child(n + 4) {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%) scale(0.5);
+	visibility: hidden;
 }
 
-.niches__photoshoot__image__img {
+.niches__gallery_wrapper:nth-child(odd) {
+	.niches__gallery__image_wrapper:nth-child(1) {
+		top: -6%;
+
+		.niches__gallery__image {
+			transform: scale(0.98);
+		}
+	}
+
+	.niches__gallery__image_wrapper:nth-child(2) {
+		top: 7%;
+
+		.niches__gallery__image {
+			transform: scale(0.85);
+		}
+	}
+
+	.niches__gallery__image_wrapper:nth-child(3) {
+		top: 0;
+
+		.niches__gallery__image {
+			transform: scale(0.92);
+		}
+	}
+}
+
+.niches__gallery_wrapper:nth-child(even) {
+	.niches__gallery__image_wrapper:nth-child(1) {
+		top: -6%;
+
+		.niches__gallery__image {
+			transform: scale(1);
+		}
+	}
+
+	.niches__gallery__image_wrapper:nth-child(2) {
+		top: 0;
+
+		.niches__gallery__image {
+			transform: scale(0.835);
+		}
+	}
+
+	.niches__gallery__image_wrapper:nth-child(3) {
+		top: -6%;
+
+		.niches__gallery__image {
+			transform: scale(0.85);
+		}
+	}
+}
+
+.niches__gallery__image {
+	height: 100%;
+	width: auto;
 }

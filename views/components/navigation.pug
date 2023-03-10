@@ -1,12 +1,12 @@
 nav.navigation
-  .navigation_wrapper 
-    ul.navigation__list
-      li
-        a.navigation__list__link.--logo(href="/")=home.data.title
-      li
-        a.navigation__list__link.--niche(href="/:nicho") :Nicho
-      li
-        a.navigation__list__link.--photoshoot(href=":nicho/:ensaio") :Ensaio
+  ul.navigation__list
+    li.navigation__list__item
+      a.navigation__link.navigation__link--logo(href="/")=home.data.title
+    li.navigation__list__item
+      a.navigation__link.navigation__link--niche(href="/:nicho")='>  :Nicho'
+    li.navigation__list__item
+      a.navigation__link.navigation__link--photoshoot(href=":nicho/:ensaio")='>  :Ensaio'
+    li.navigation__list__item
+      a.navigation__link.navigation__link--contact(href="#Contato") contato
 
-    a.navigation__link(href="#Contato") Contato
-    a.navigation__link(href="#") Voltar
+  a.navigation__link.navigation__link--back(href="#")='<  voltar'
