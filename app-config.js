@@ -1,7 +1,11 @@
-import dotenv from 'dotenv'
 import path from 'path'
 import { fileURLToPath } from 'url'
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const searchParams = new URLSearchParams()
+searchParams.set('__dirname', __dirname)
+
+import dotenv from 'dotenv'
 dotenv.config()
 
 import express from 'express'

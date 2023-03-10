@@ -1,6 +1,9 @@
 import path from 'path'
 import { fileURLToPath } from 'url'
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const searchParams = new URLSearchParams()
+searchParams.set('__dirname', __dirname)
 
 import webpack from 'webpack'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
