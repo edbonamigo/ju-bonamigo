@@ -14,11 +14,8 @@ style(type='text/css').
     box-sizing: border-box;
   }
 
-  html,
-  body {
-    width: 100%;
-    min-height: 100%;
-  }
+  html { width: 100vw; min-height: 100%; }
+  body { width: 100%; min-height: 100%; }
 
   html {
     font-family: "Branch";
@@ -27,6 +24,14 @@ style(type='text/css').
     background: #cdc9c4;
     color: #5b402f;
     overflow-x: hidden;
+  }
+
+  html::before {
+    top: 0;
+  }
+
+  html::after {
+    bottom: 0;
   }
 
   html.--preloader {
@@ -84,6 +89,24 @@ style(type='text/css').
     animation-fill-mode: forwards;
   }
 
+  .border-mask--top,
+  .border-mask--bottom {
+    background-color: #cdc9c4;
+    position: fixed;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    z-index: 9999999999;
+  }
+
+  .border-mask--top {
+    top: 0;
+  }
+
+  .border-mask--bottom {
+    bottom: 0;
+  }
+
   @keyframes fade-in {
     100% {
       opacity: 1;
@@ -107,7 +130,7 @@ style(type='text/css').
     top: -100%;
     width: 300%;
     pointer-events: none;
-    z-index: 99999;
+    z-index: 1;
   }
 
   @keyframes grain {

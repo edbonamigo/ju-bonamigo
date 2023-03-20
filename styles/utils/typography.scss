@@ -1,0 +1,50 @@
+%text-200 {
+	font-size: 20rem;
+	color: $dawn-pink;
+	mix-blend-mode: screen;
+	z-index: z('content');
+}
+
+%text-175 {
+	font-size: 17.5rem;
+	color: $dawn-pink;
+	mix-blend-mode: screen;
+	z-index: z('content');
+}
+
+%text-150 {
+	font-size: 15rem;
+	color: $dawn-pink;
+	mix-blend-mode: screen;
+	z-index: z('content');
+}
+
+%text-75 {
+	font-size: 7.5rem;
+	color: $dawn-pink;
+	z-index: z('content');
+}
+
+%text-50 {
+	font-size: 5rem;
+	color: $dawn-pink;
+	mix-blend-mode: screen;
+	z-index: z('content');
+}
+
+%text-40 {
+	font-size: 4rem;
+	z-index: z('content');
+}
+
+%text-30 {
+	font-size: 3rem;
+	z-index: z('content');
+}
+
+%text-20 {
+	font-size: 2rem;
+	color: $dawn-pink;
+	mix-blend-mode: screen;
+	z-index: z('content');
+}

@@ -2,13 +2,27 @@
 	@extend %flex-center;
 	flex-flow: column;
 	justify-content: center;
+	position: relative;
 
-	width: 100vw;
+	width: 100%;
 	height: 100vh;
 }
 
+.contact__image_wrapper {
+	position: absolute;
+	height: 100vh;
+	width: 100%;
+}
+
+.contact__image {
+	@extend %cover;
+	z-index: z('noise');
+}
+
 .contact__link {
-	margin-bottom: 2rem;
+	height: 25rem;
+	margin-bottom: 5rem;
+	z-index: z('content');
 
 	&:first-child {
 		.contact__link__title_wrapper {
@@ -39,6 +53,6 @@
 
 .contact__link__text {
 	@extend %text-75;
-	color: $color-millbrook;
+	color: $millbrook;
 	transform: translateY(-25%);
 }

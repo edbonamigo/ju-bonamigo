@@ -2,7 +2,7 @@
 	@extend %cover;
 
 	position: fixed;
-	height: 100vh;
+	height: 0;
 	padding: 2rem 3rem;
 	z-index: z('navigation');
 
@@ -31,15 +31,19 @@
 .navigation__link {
 	@extend %text-30;
 
-	color: $color-spring-wood;
+	color: $spring-wood;
 	opacity: 0.92;
+	position: relative;
+	z-index: z('navigation');
 }
 
 .navigation__link.navigation__link--logo {
 	@extend %text-40;
 
-	color: $color-spring-wood;
+	color: $spring-wood;
 	opacity: 0.92;
+	position: relative;
+	z-index: z('navigation');
 }
 
 .navigation__link--back {

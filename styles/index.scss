@@ -4,8 +4,7 @@
 @import './utils/functions.scss';
 @import './utils/mixins.scss';
 @import './utils/responsive.scss';
-
-@import './common/typography.scss';
+@import './utils/typography.scss';
 
 // @import './base/fonts.scss'; > critical-styles.pug
 @import './base/base.scss';
@@ -16,10 +15,10 @@
 
 @import './pages/home/about';
 @import './pages/home/contact';
-@import './pages/home/home';
+@import './pages/home/hero';
 @import './pages/home/niches';
 @import './pages/home/parallax';
 
-@import './pages/niches/niches';
+@import './pages/niche/niche';
 
 @import './pages/photoshoot/photoshoot';

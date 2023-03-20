@@ -11,7 +11,7 @@ body.--preloader {
 	@extend %flex-center;
 
 	opacity: 0;
-	background: $color-cloud;
+	background: $cloud;
 	align-items: center;
 	text-align: center;
 	z-index: z('preloader');

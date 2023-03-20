@@ -1,0 +1,4 @@
+section.parallax
+	each item in home.data.parallax_images.slice(0,3)
+		.parallax__image_wrapper
+			img.parallax__image(src=item.image.url alt=item.image.alt draggable="false")

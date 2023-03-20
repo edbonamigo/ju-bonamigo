@@ -2,14 +2,14 @@
 	@extend %flex-center;
 	justify-content: flex-start;
 
-	width: 100vw;
+	width: 100%;
 	height: auto;
 	margin-top: 25rem;
 }
 
 .about__image_wrapper {
-	width: 55rem;
-	height: 50rem;
+	width: 50rem;
+	height: 45rem;
 	justify-self: flex-start;
 	border-radius: 0 50% 50% 0;
 	position: relative;

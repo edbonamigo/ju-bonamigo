@@ -4,6 +4,24 @@
 	box-sizing: border-box;
 }
 
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: $cloud;
+}
+
+::-webkit-scrollbar-thumb {
+	background: $millbrook;
+	background: linear-gradient(
+		90deg,
+		rgba(205, 201, 196, 1) 0%,
+		rgba(91, 64, 47, 1) 100%
+	);
+}
+
 html {
 	font-size: calc(100vw / 1512 * 10);
 	line-height: 1;
@@ -16,8 +34,8 @@ html {
 body {
 	font-size: 3rem;
 	font-family: $font-primary;
-	background: $color-cloud;
-	color: $color-millbrook;
+	background: $cloud;
+	color: $millbrook;
 	user-select: none;
 	position: relative;
 }

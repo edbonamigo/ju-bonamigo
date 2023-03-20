@@ -1,0 +1,43 @@
+.hero {
+	width: 100%;
+	height: 100vh;
+	position: relative;
+}
+
+.hero__title_wrapper {
+	@extend %cover;
+	@extend %flex-center;
+
+	flex-direction: column;
+	margin-top: -3rem;
+	z-index: z('titles');
+}
+
+.hero__title {
+	@extend %text-175;
+
+	color: $spring-wood;
+	opacity: 0.92;
+	mix-blend-mode: unset;
+}
+
+.hero__subtitle {
+	@extend %text-50;
+
+	letter-spacing: 1.25rem;
+	text-transform: uppercase;
+	color: $spring-wood;
+	opacity: 0.92;
+	mix-blend-mode: unset;
+}
+
+.hero__image {
+	@extend %cover;
+}
+
+.hero__image__img {
+	@extend %cover;
+
+	object-fit: cover;
+	z-index: z('content');
+}

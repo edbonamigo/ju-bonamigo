@@ -4,20 +4,13 @@ block variables
 	- var template = 'niche'
 
 block content
-	section.niche
-		.niche_wrapper
-			each niche in niches
-				if niche.uid == uid
-
-					ul.niche__gallery(id=niche.uid)
-						h3.niche__gallery__title=niche.data.title
-
-						each photoshoot in niche.data.photoshoots
-								li.niche__photoshoot
-									a.niche__photoshoot__link(id=niche.uid href=`/${niche.uid}/${photoshoot.photoshoot.uid}`)
-										if photoshoot.title
-											h6.niche__photoshoot__title=photoshoot.data.title
-
-										.niche__photoshoot__image
-											img.niche__photoshoot__image__img(src=photoshoot.image.url alt=photoshoot.image.alt)
-					
+	section.niche(id=uid)
+		h3.niche__title=niche.data.title
+			
+		ul.niche__list(id=niche.uid)
+			each item in niche.data.photoshoots
+				li.niche__item
+					.niche__item__title_wrapper
+						h6.niche__item__title=item.photoshoot.data.title
+					a.niche__item__link(id=niche.uid href=`/${niche.uid}/${item.photoshoot.uid}`)
+						img.niche__item__link__image(src=item.image.url alt=item.image.alt)
