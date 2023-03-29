@@ -10,7 +10,7 @@
 
 	flex-direction: column;
 	margin-top: -3rem;
-	z-index: z('titles');
+	z-index: z('hero-titles');
 }
 
 .hero__title {
@@ -39,5 +39,5 @@
 	@extend %cover;
 
 	object-fit: cover;
-	z-index: z('content');
+	z-index: z('hero-content');
 }

@@ -8,16 +8,35 @@ html.--niche {
 	position: relative;
 }
 
-.niche__title {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translateX(-50%, -50%);
+.niche__title_wrapper {
+	width: 100%;
+	height: auto;
 	display: flex;
-	flex-flow: column;
+	justify-content: center;
+	margin: 13vh 0 6vh;
 }
 
-.niche__title span {
+.niche__title {
+	@extend %text-150;
+
+	display: flex;
+	flex-flow: column;
+	position: fixed;
+	left: 15vw;
+	top: 30%;
+	pointer-events: none;
+	z-index: z('titles');
+
+	@include media('<phone') {
+		position: relative;
+		left: unset;
+		top: unset;
+		z-index: 1;
+	}
+
+	span:not(:first-child) {
+		margin-left: 25rem;
+	}
 }
 
 .niche__list {
@@ -28,21 +47,41 @@ html.--niche {
 	display: flex;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
+
+	@include media('<phone') {
+		padding: 2rem;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 2rem;
+		grid-column-gap: 2.2rem;
+		height: auto;
+	}
 }
 
 .niche__item {
 	margin-right: 9rem;
 	position: relative;
 	height: 100%;
+
+	@include media('<phone') {
+		margin-right: 0;
+		height: 73vw;
+	}
 }
 
 .niche__item__title_wrapper {
 	position: absolute;
 	bottom: 2rem;
 	left: 2rem;
+	z-index: z('titles');
+
+	@include media('<phone') {
+		display: none;
+	}
 }
 
 .niche__item__title {
+	@extend %text-150;
 }
 
 .niche__item__link {
@@ -50,6 +89,12 @@ html.--niche {
 	height: 100%;
 	min-width: 25vw;
 	position: relative;
+
+	@include media('<phone') {
+		aspect-ratio: unset;
+		min-width: unset;
+		width: 100%;
+	}
 }
 
 .niche__item__link__image {

@@ -3,6 +3,10 @@
 	color: $dawn-pink;
 	mix-blend-mode: screen;
 	z-index: z('content');
+
+	@include media('<phone') {
+		font-size: 24rem;
+	}
 }
 
 %text-175 {
@@ -10,6 +14,10 @@
 	color: $dawn-pink;
 	mix-blend-mode: screen;
 	z-index: z('content');
+
+	@include media('<phone') {
+		font-size: 24rem;
+	}
 }
 
 %text-150 {
@@ -17,12 +25,20 @@
 	color: $dawn-pink;
 	mix-blend-mode: screen;
 	z-index: z('content');
+
+	@include media('<phone') {
+		font-size: 22rem;
+	}
 }
 
 %text-75 {
 	font-size: 7.5rem;
 	color: $dawn-pink;
 	z-index: z('content');
+
+	@include media('<phone') {
+		font-size: 10rem;
+	}
 }
 
 %text-50 {
@@ -30,16 +46,28 @@
 	color: $dawn-pink;
 	mix-blend-mode: screen;
 	z-index: z('content');
+
+	@include media('<phone') {
+		font-size: 8rem;
+	}
 }
 
 %text-40 {
 	font-size: 4rem;
 	z-index: z('content');
+
+	@include media('<phone') {
+		font-size: 8rem;
+	}
 }
 
 %text-30 {
 	font-size: 3rem;
 	z-index: z('content');
+
+	@include media('<phone') {
+		font-size: 6rem;
+	}
 }
 
 %text-20 {
@@ -47,4 +75,8 @@
 	color: $dawn-pink;
 	mix-blend-mode: screen;
 	z-index: z('content');
+
+	@include media('<phone') {
+		font-size: 6rem;
+	}
 }

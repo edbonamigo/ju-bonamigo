@@ -5,12 +5,15 @@ block variables
 
 block content
 	section.niche(id=uid)
-		h3.niche__title=niche.data.title
-			
-		ul.niche__list(id=niche.uid)
-			each item in niche.data.photoshoots
+		.niche__title_wrapper
+			h3.niche__title
+				each title in	content.data.title.split(' ') 
+					span=title
+
+		ul.niche__list
+			each item in content.data.photoshoots
 				li.niche__item
 					.niche__item__title_wrapper
 						h6.niche__item__title=item.photoshoot.data.title
-					a.niche__item__link(id=niche.uid href=`/${niche.uid}/${item.photoshoot.uid}`)
+					a.niche__item__link(id=uid href=`/${uid}/${item.photoshoot.uid}`)
 						img.niche__item__link__image(src=item.image.url alt=item.image.alt)

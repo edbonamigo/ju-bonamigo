@@ -2,11 +2,13 @@
 	@extend %cover;
 
 	position: fixed;
-	height: 0;
-	padding: 2rem 3rem;
+	height: auto;
+	padding: 2rem 3rem 1rem;
 	z-index: z('navigation');
 
-	// display: none;
+	@include media('<phone') {
+		padding: 4rem 4rem 1rem;
+	}
 }
 
 .navigation.a {

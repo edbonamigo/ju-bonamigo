@@ -1,11 +1,16 @@
 .contact {
-	@extend %flex-center;
+	display: flex;
 	flex-flow: column;
+	align-items: flex-end;
 	justify-content: center;
 	position: relative;
-
 	width: 100%;
 	height: 100vh;
+
+	@include media('<phone') {
+		align-items: center;
+		justify-content: flex-end;
+	}
 }
 
 .contact__image_wrapper {
@@ -16,30 +21,31 @@
 
 .contact__image {
 	@extend %cover;
+	object-position: right;
 	z-index: z('noise');
+
+	@include media('<phone') {
+		object-position: 43% 0;
+	}
 }
 
 .contact__link {
 	height: 25rem;
-	margin-bottom: 5rem;
+	margin: 0 15rem 2rem;
+	text-align: right;
 	z-index: z('content');
+	transform: translateY(-5vh);
 
-	&:first-child {
-		.contact__link__title_wrapper {
-			transform: translateX(-10rem);
-		}
-		.contact__link__text_wrapper {
-			transform: translateX(-4rem);
-		}
+	@include media('<phone') {
+		height: 30rem;
+		text-align: left;
+		margin-bottom: 7rem;
 	}
+}
 
-	&:last-child {
-		.contact__link__title_wrapper {
-			transform: translateX(1rem);
-		}
-		.contact__link__text_wrapper {
-			transform: translateX(13rem);
-		}
+.contact__link:last-child {
+	@include media('<phone') {
+		margin-bottom: 18vh;
 	}
 }
 
@@ -51,8 +57,14 @@
 	@extend %text-200;
 }
 
+.contact__link__text_wrapper {
+	margin-left: 20rem;
+	position: relative;
+	transform: translateY(-110%);
+	z-index: z('titles');
+}
+
 .contact__link__text {
-	@extend %text-75;
+	@extend %text-50;
 	color: $millbrook;
-	transform: translateY(-25%);
 }

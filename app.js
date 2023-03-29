@@ -45,18 +45,16 @@ app.get('/:niche', async (req, res) => {
 		fetchLinks: 'photoshoot.title',
 	})
 
-	let niche
+	let content
 	niches.forEach((i) => {
 		if (i.uid == uid) {
-			niche = i
+			content = i
 		}
 	})
 
-	console.log(niche)
-
 	res.render('pages/niche', {
 		...res.locals.defaults,
-		niche,
+		content,
 		uid,
 	})
 })

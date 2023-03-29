@@ -38,6 +38,10 @@ body {
 	color: $millbrook;
 	user-select: none;
 	position: relative;
+
+	@include media('<phone') {
+		font-size: 8rem;
+	}
 }
 
 .content {
