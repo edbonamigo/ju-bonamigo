@@ -1,25 +1,18 @@
-import path from 'path'
-import { fileURLToPath } from 'url'
+const path = require('path')
+const express = require('express')
+const logger = require('morgan')
+const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
+const errorHandler = require('errorhandler')
+const prismicH = require('@prismicio/helpers')
+const { keepNumbers } = require('./app/utils/sanitize.js')
+const dotenv = require('dotenv')
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const searchParams = new URLSearchParams()
-searchParams.set('__dirname', __dirname)
-
-import dotenv from 'dotenv'
 dotenv.config()
 
-import express from 'express'
-import logger from 'morgan'
-import bodyParser from 'body-parser'
-import methodOverride from 'method-override'
-import errorHandler from 'errorhandler'
-import * as prismicH from '@prismicio/helpers'
-import { keepNumbers } from './app/utils/sanitize.js'
-
 const app = express()
-const port = process.env.PORT
 
-app.set('port', 3000)
+app.set('port', process.env.PORT)
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
@@ -43,4 +36,4 @@ app.use((req, res, next) => {
 	next()
 })
 
-export default app
+module.exports = app

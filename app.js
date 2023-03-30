@@ -1,8 +1,8 @@
-import dotenv from 'dotenv'
+const app = require('./app-config.js')
+const client = require('./app-client-config.js')
+const dotenv = require('dotenv')
 dotenv.config()
 
-import app from './app-config.js'
-import client from './app-client-config.js'
 const port = process.env.PORT
 
 app.use(async (req, res, next) => {
@@ -31,8 +31,6 @@ app.get('/', async (req, res) => {
 		})
 	})
 
-	console.log(res.locals.defaults.home)
-
 	res.render('pages/home', {
 		...res.locals.defaults,
 		niches,
@@ -41,15 +39,8 @@ app.get('/', async (req, res) => {
 
 app.get('/:niche', async (req, res) => {
 	const uid = req.params.niche
-	const niches = await client.getAllByType('niche', {
+	const content = await client.getByUID('niche', uid, {
 		fetchLinks: 'photoshoot.title',
-	})
-
-	let content
-	niches.forEach((i) => {
-		if (i.uid == uid) {
-			content = i
-		}
 	})
 
 	res.render('pages/niche', {
