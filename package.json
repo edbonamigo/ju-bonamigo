@@ -12,6 +12,7 @@
 	},
 	"devDependencies": {
 		"@babel/core": "^7.20.12",
+		"@barba/core": "^2.9.7",
 		"babel-loader": "^9.1.2",
 		"clean-webpack-plugin": "^4.0.0",
 		"concurrently": "^7.6.0",

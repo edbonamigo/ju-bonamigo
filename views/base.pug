@@ -36,12 +36,12 @@ html(lang="pt-br")
 		
 		link(href="main.css" rel="stylesheet")
 
-	body
+	body(data-barba="wrapper")
 
 		include ./components/preloader
 		include ./components/navigation
 
-		.content#content(data-template=template)
+		main.content#content(data-template=template data-barba="container" data-barba-namespace="home")
 			block content
 
 			include ./layouts/parallax

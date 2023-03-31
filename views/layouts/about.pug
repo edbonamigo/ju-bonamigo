@@ -1,4 +1,4 @@
 section.about
 	figure.about__image_wrapper
-		img.about__image(data-src=home.data.perfil.url alt=home.data.perfil.alt draggable="false")
+		img.about__image.js-lazy-load(data-src=home.data.perfil.url alt=home.data.perfil.alt draggable="false")
 	.about__text!=prismicH.asHTML(home.data.about)

@@ -1,6 +1,8 @@
 import Component from '../classes/Component'
+
 import each from 'lodash/each'
 import GSAP from 'gsap'
+import lazyLoad from 'utils/lazyLoad'
 import { split } from 'utils/text'
 
 export default class Preloader extends Component {
@@ -11,7 +13,7 @@ export default class Preloader extends Component {
 				title: '.preloader__text',
 				number: '.preloader__number',
 				numberText: '.preloader__number__text',
-				images: document.querySelectorAll('img'),
+				images: document.querySelectorAll('.js-lazy-load'),
 			},
 		})
 
@@ -22,14 +24,7 @@ export default class Preloader extends Component {
 		this.i = 0
 		this.totalImages = this.elements.images.length
 
-		this.lazyLoadImages()
-	}
-
-	lazyLoadImages() {
-		each(this.elements.images, (image) => {
-			image.onload = (_) => this.trackProgress()
-			image.src = image.dataset.src
-		})
+		lazyLoad(this.trackProgress.bind(this))
 	}
 
 	trackProgress() {
