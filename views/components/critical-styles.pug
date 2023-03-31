@@ -63,7 +63,7 @@ style(type='text/css').
     background: #cdc9c4;
     align-items: center;
     text-align: center;
-    z-index: 999;
+    z-index: 99;
   }
 
   .preloader__text {
@@ -72,7 +72,7 @@ style(type='text/css').
   }
 
   .preloader__number {
-    font-size: 2rem;
+    font-size: 1.9rem;
     opacity: 0;
 
     position: absolute;
@@ -90,10 +90,10 @@ style(type='text/css').
 
     @media(max-width: 768px) {
       .preloader__text {
-        font-size: 9rem;
+        font-size: 10rem;
       }
       .preloader__number {
-        font-size: 7rem;
+        font-size: 6rem;
         bottom: 10rem;
       }
   }
@@ -105,7 +105,7 @@ style(type='text/css').
     left: 0;
     height: 5px;
     width: 100%;
-    z-index: 9999999999;
+    z-index: 999;
   }
 
   .border-mask--top {
@@ -117,8 +117,13 @@ style(type='text/css').
   }
 
   @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY('-100%')
+    }
     100% {
       opacity: 1;
+      transform: translateY('0')
     }
   }
 
@@ -140,6 +145,10 @@ style(type='text/css').
     width: 300%;
     pointer-events: none;
     z-index: 1;
+  }
+
+  body.--preloader:before {
+    z-index: 9999;
   }
 
   @keyframes grain {

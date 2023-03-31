@@ -46,13 +46,13 @@ export default class Preloader extends Component {
 	onLoaded() {
 		return new Promise((resolve) => {
 			this.hidePreloader = GSAP.timeline({
-				delay: 0.5,
+				delay: 2,
 			})
 
 			this.hidePreloader.to([this.spans, this.elements.numberText], {
 				duration: 2,
 				ease: 'expo.out',
-				stagger: 0.06,
+				stagger: 0.02,
 				y: '100%',
 			})
 
