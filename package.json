@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"scripts": {
 		"backend:build": "node app.js",
-		"backend:dev": "node app.js",
+		"backend:dev": "nodemon app.js",
 		"frontend:dev": "webpack serve --config webpack.config.development.js",
 		"frontend:build": "webpack --config webpack.config.build.js",
 		"start": "clear & concurrently --kill-others \"yarn run backend:dev\" \"yarn run frontend:dev\""

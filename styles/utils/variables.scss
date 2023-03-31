@@ -8,11 +8,11 @@ $font-primary: 'Branch';
 $ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
 $z-indexes: (
-	'preloader',
 	'hero-titles',
 	'hero-content',
 	'navigation',
 	'titles',
 	'content',
-	'noise'
+	'noise',
+	'preloader'
 );

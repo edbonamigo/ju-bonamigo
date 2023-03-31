@@ -11,7 +11,7 @@
 
 @import './components/footer.scss';
 @import './components/navigation.scss';
-// @import './components/preloader.scss'; > critical-styles.pug
+@import './components/preloader.scss'; // critical-styles.pug
 
 @import './pages/home/about';
 @import './pages/home/contact';

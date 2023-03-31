@@ -2,31 +2,19 @@ body.--preloader {
 	overflow: hidden;
 
 	.preloader {
-		opacity: 1;
+		// opacity: 1;
 	}
 }
 
-.preloader {
-	@extend %cover;
-	@extend %flex-center;
-
-	height: 100vh;
-	opacity: 0;
-	background: $cloud;
-	align-items: center;
-	text-align: center;
-	z-index: z('preloader');
+.preloader__text {
+	overflow: hidden;
 }
 
-.preloader__text {
+.preloader__text span {
 	@extend %text-30;
+	display: inline-block;
 }
 
 .preloader__number {
-	@extend %text-20;
-
-	position: absolute;
-	left: 48%;
-	bottom: 7rem;
-	transform: translateX(-50%);
+	overflow: hidden;
 }

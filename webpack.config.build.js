@@ -1,5 +1,4 @@
 const path = require('path')
-// Hack to enable __dirname on ES6 modules
 
 const { merge } = require('webpack-merge')
 const config = require('./webpack.config.js')
