@@ -4,7 +4,7 @@ import '../fonts/Branch.woff2'
 import Preloader from 'components/Preloader'
 
 import barba from '@barba/core'
-import lazyLoad from 'utils/lazyLoad'
+import lazyLoad from 'utils/lazy-load'
 
 class App {
 	constructor() {

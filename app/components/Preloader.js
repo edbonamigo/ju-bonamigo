@@ -2,7 +2,7 @@ import Component from '../classes/Component'
 
 import each from 'lodash/each'
 import GSAP from 'gsap'
-import lazyLoad from 'utils/lazyLoad'
+import lazyLoad from 'utils/lazy-load'
 import { split } from 'utils/text'
 
 export default class Preloader extends Component {
@@ -17,19 +17,18 @@ export default class Preloader extends Component {
 			},
 		})
 
-		split({
-			element: this.elements.title,
-		})
+		split({ element: this.elements.title })
 		this.spans = GSAP.utils.toArray('.preloader span')
+
 		this.i = 0
-		this.totalImages = this.elements.images.length
+		this.length = this.elements.images.length
 
 		lazyLoad(this.trackProgress.bind(this))
 	}
 
 	trackProgress() {
 		this.i += 1
-		const percentLoaded = Math.round((this.i / this.totalImages) * 100)
+		const percentLoaded = Math.round((this.i / this.length) * 100)
 
 		this.elements.numberText.innerHTML = `${percentLoaded}%`
 
@@ -48,6 +47,7 @@ export default class Preloader extends Component {
 				duration: 2,
 				ease: 'expo.out',
 				stagger: 0.02,
+				autoAlpha: 0,
 				y: '100%',
 			})
 
