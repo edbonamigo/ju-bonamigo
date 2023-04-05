@@ -11,7 +11,7 @@ block content
 				h1.photoshoot__hero__title=photoshoot.data.title
 				
 			.photoshoot__hero__image_wrapper
-				img.photoshoot__hero__image.js-lazy-load(data-src=mainImage.url alt=mainImage.alt)
+				img.photoshoot__hero__image(data-lazy="img" data-src=mainImage.url alt=mainImage.alt)
 
 		each slice in photoshoot.data.body
 			if slice.slice_type == 'grid_imagens'
@@ -19,14 +19,14 @@ block content
 					each media in slice.items
 						if media.imagem1.url !== undefined
 							figure.photoshoot__grid__image_wrapper
-								img.photoshoot__grid__image.js-lazy-load(data-src=media.imagem1.url alt=media.imagem1.alt)
+								img.photoshoot__grid__image(data-lazy="img" data-src=media.imagem1.url alt=media.imagem1.alt)
 		
 			if slice.slice_type == 'imagem_destaque'
 				section.photoshoot__full
 					each media in slice.items
 						if media.image.url !== undefined
 							figure.photoshoot__full__image_wrapper
-								img.photoshoot__full__image.js-lazy-load(data-src=media.image.url alt=media.image.alt)
+								img.photoshoot__full__image(data-lazy="img" data-src=media.image.url alt=media.image.alt)
 
 		.photoshoot__more
 			a.photoshoot__more__link(href="#")

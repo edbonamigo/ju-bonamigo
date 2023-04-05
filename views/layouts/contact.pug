@@ -1,8 +1,8 @@
 section.contact(id='contato')
 	.contact__image_wrapper
-		img.contact__image.js-lazy-load(data-src=home.data.background.url alt=home.data.background.alt)
+		img.contact__image(data-lazy="img" data-src=home.data.background.url alt=home.data.background.alt)
 
-	a.contact__link(href=home.data.social_media_link.url draggable="false")
+	a.contact__link(href=home.data.social_media_link.url draggable="false" target="_blank")
 		.contact__link__title_wrapper
 			h4.contact__link__title=home.data.social_media_title
 		.contact__link__text_wrapper

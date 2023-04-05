@@ -9,7 +9,7 @@ block content
 			h1.hero__title=home.data.title
 			h2.hero__subtitle=home.data.subtitle
 		.hero__image
-			img.hero__image__img.js-lazy-load(data-src=home.data.home_images[random].image.url, alt=home.data.home_images[random].image.alt draggable="false")
+			img.hero__image__img(data-lazy="img" data-src=home.data.home_images[random].image.url, alt=home.data.home_images[random].image.alt draggable="false")
 
 	section.niches
 		each niche in niches
@@ -21,5 +21,5 @@ block content
 					ul.niches__list
 						each photoshoot in niche.data.photoshoots
 							li.niches__item
-								img.niches__item__image.js-lazy-load(data-src=photoshoot.image.url alt=photoshoot.image.alt draggable="false")
+								img.niches__item__image(data-lazy="img" data-src=photoshoot.image.url alt=photoshoot.image.alt draggable="false")
 

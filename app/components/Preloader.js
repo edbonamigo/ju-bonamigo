@@ -13,7 +13,7 @@ export default class Preloader extends Component {
 				text: '.preloader__text',
 				number: '.preloader__number',
 				numberText: '.preloader__number__text',
-				images: document.querySelectorAll('.js-lazy-load'),
+				images: document.querySelectorAll('[data-lazy="img"]'),
 				title: '.hero__title',
 				subtitle: '.hero__subtitle',
 			},
@@ -42,7 +42,7 @@ export default class Preloader extends Component {
 	onLoaded() {
 		return new Promise((resolve) => {
 			this.hidePreloader = GSAP.timeline({
-				delay: 1,
+				delay: 1.2,
 			})
 
 			this.hidePreloader.to([this.spans, this.elements.numberText], {

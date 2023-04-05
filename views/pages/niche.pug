@@ -16,4 +16,4 @@ block content
 					.niche__item__title_wrapper
 						h6.niche__item__title=item.photoshoot.data.title
 					a.niche__item__link(id=uid href=`/${uid}/${item.photoshoot.uid}`)
-						img.niche__item__link__image.js-lazy-load(data-src=item.image.url alt=item.image.alt)
+						img.niche__item__link__image(data-lazy="img" data-src=item.image.url alt=item.image.alt)
