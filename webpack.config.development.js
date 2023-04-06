@@ -6,19 +6,28 @@ const config = require('./webpack.config.js')
 module.exports = merge(config, {
 	mode: 'development',
 
-	devtool: 'inline-source-map',
+	cache: false,
+
+	devtool: 'source-map',
 
 	devServer: {
 		devMiddleware: {
-			publicPath: '/public',
 			writeToDisk: true,
 		},
+		static: {
+			directory: path.join(__dirname, 'dist'),
+		},
+		compress: true,
+		port: 9000,
 		client: {
 			logging: 'none',
 		},
+		hot: true,
 	},
 
 	output: {
-		path: path.resolve(__dirname, 'public'),
+		filename: 'bundle.js',
+		path: path.resolve(__dirname, 'dist'),
+		clean: true,
 	},
 })
