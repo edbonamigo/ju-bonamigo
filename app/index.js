@@ -1,53 +1,68 @@
 import '../fonts/Branch.woff'
 import '../fonts/Branch.woff2'
 
-import Preloader from 'components/Preloader'
-
-import barba from '@barba/core'
-import barbaPrefetch from '@barba/prefetch'
-import lazyLoad from 'utils/lazy-load'
 import Lenis from '@studio-freight/lenis'
+import barba from '@barba/core'
 
-barba.use(barbaPrefetch)
+import Preloader from 'components/Preloader'
+import lazyLoad from 'utils/lazy-load'
+
+import { Hero } from 'animations'
 
 class App {
 	constructor() {
-		this.initPreloader()
+		this.preload()
 	}
 
-	initPreloader() {
+	preload() {
 		this.preloader = new Preloader()
+		this.preloader.once('loaded', this.createAnimations.bind(this))
 		this.preloader.once('completed', this.initPage.bind(this))
 	}
 
+	createAnimations() {
+		this.hero = new Hero()
+	}
+
 	initPage() {
+		barba.hooks.once(() => setTimeout(() => window.scrollTo(0, 0), 100))
+
 		barba.hooks.beforeEnter((data) => {
+			smoothScroll.start()
 			lazyLoad()
-			lenis.start()
+		})
+
+		barba.hooks.afterEnter((data) => {
+			this.hero.border()
+
+			this.hero.createTriggers()
 		})
 
 		barba.init({
-			// disable links when transitioning
+			// TODO: ONCE: scroll on top!
+
+			// Disable links when transitioning.
 			preventRunning: true,
 		})
 	}
 }
 
 /**
- * Smooth Scroll
+ * Smooth Scroll.
  */
-const lenis = new Lenis()
-window.lenis = lenis
-lenis.stop()
+const smoothScroll = new Lenis()
+
+window.lenis = smoothScroll
+smoothScroll.stop()
 
 function raf(time) {
-	lenis.raf(time)
+	smoothScroll.raf(time)
 	requestAnimationFrame(raf)
 }
 
 requestAnimationFrame(raf)
 
 /**
- * Entry point
+ * Entry point.
  */
 new App()

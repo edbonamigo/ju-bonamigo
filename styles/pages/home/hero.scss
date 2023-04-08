@@ -2,6 +2,7 @@
 	width: 100%;
 	height: 100vh;
 	position: relative;
+	z-index: z('hero-content');
 }
 
 .hero__title_wrapper {
@@ -31,11 +32,13 @@
 	mix-blend-mode: unset;
 }
 
-.hero__image {
+.hero__image-mask,
+.hero__image_wrapper {
 	@extend %cover;
+	overflow: hidden;
 }
 
-.hero__image__img {
+.hero__image {
 	@extend %cover;
 
 	object-fit: cover;

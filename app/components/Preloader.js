@@ -36,6 +36,7 @@ export default class Preloader extends Component {
 
 		if (percentLoaded === 100) {
 			this.onLoaded()
+			this.emit('loaded')
 		}
 	}
 
