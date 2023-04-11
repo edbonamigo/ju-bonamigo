@@ -16,12 +16,12 @@ class App {
 
 	preload() {
 		this.preloader = new Preloader()
-		this.preloader.once('loaded', this.createAnimations.bind(this))
-		this.preloader.once('completed', this.initPage.bind(this))
+		// this.preloader.once('loaded', this.initSPA.bind(this))
+		this.preloader.once('completed', this.enableScroll.bind(this))
 	}
 
-	createAnimations() {
-		this.hero = new Hero()
+	enableScroll() {
+		lenis.start()
 	}
 
 	initPage() {
@@ -50,17 +50,23 @@ class App {
 /**
  * Smooth Scroll.
  */
-const smoothScroll = new Lenis()
-
-window.lenis = smoothScroll
-smoothScroll.stop()
+const lenis = new Lenis({
+	duration: 1.2,
+})
 
 function raf(time) {
-	smoothScroll.raf(time)
+	lenis.raf(time)
 	requestAnimationFrame(raf)
 }
-
 requestAnimationFrame(raf)
+
+lenis.on('scroll', ScrollTrigger.update)
+gsap.ticker.add((time) => {
+	lenis.raf(time * 1000)
+})
+
+window.lenis = lenis
+lenis.stop()
 
 /**
  * Entry point.
