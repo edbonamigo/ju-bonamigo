@@ -3,6 +3,9 @@ import '../fonts/Branch.woff2'
 
 import Lenis from '@studio-freight/lenis'
 import barba from '@barba/core'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 
 import Preloader from 'components/Preloader'
 import lazyLoad from 'utils/lazy-load'

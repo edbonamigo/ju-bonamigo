@@ -1,29 +1,27 @@
-import Component from '../classes/Component'
+import EventEmitter from 'events'
 
 import each from 'lodash/each'
 import GSAP from 'gsap'
 import lazyLoad from 'utils/lazy-load'
 import { split } from 'utils/text'
 
-export default class Preloader extends Component {
+export default class Preloader extends EventEmitter {
 	constructor() {
-		super({
-			element: '.preloader',
-			elements: {
-				text: '.preloader__text',
-				number: '.preloader__number',
-				numberText: '.preloader__number__text',
-				images: document.querySelectorAll('[data-lazy="img"]'),
-				title: '.hero__title',
-				subtitle: '.hero__subtitle',
-			},
-		})
+		super()
 
-		split({ element: this.elements.text })
+		this.preloader = document.querySelector('.preloader')
+		this.text = document.querySelector('.preloader__text')
+		this.number = document.querySelector('.preloader__number')
+		this.numberText = document.querySelector('.preloader__number__text')
+		this.images = document.querySelectorAll('[data-lazy="img"]')
+		this.title = document.querySelector('.hero__title')
+		this.subtitle = document.querySelector('.hero__subtitle')
+
+		split({ element: this.text })
 		this.spans = GSAP.utils.toArray('.preloader span')
 
 		this.i = 0
-		this.length = this.elements.images.length
+		this.length = this.images.length
 
 		lazyLoad(this.trackProgress.bind(this))
 	}
@@ -32,7 +30,7 @@ export default class Preloader extends Component {
 		this.i += 1
 		const percentLoaded = Math.round((this.i / this.length) * 100)
 
-		this.elements.numberText.innerHTML = `${percentLoaded}%`
+		this.numberText.innerHTML = `${percentLoaded}%`
 
 		if (percentLoaded === 100) {
 			this.onLoaded()
@@ -43,10 +41,10 @@ export default class Preloader extends Component {
 	onLoaded() {
 		return new Promise((resolve) => {
 			this.hidePreloader = GSAP.timeline({
-				delay: 1.2,
+				delay: 1.5,
 			})
 
-			this.hidePreloader.to([this.spans, this.elements.numberText], {
+			this.hidePreloader.to([this.spans, this.numberText], {
 				duration: 1.6,
 				ease: 'expo.out',
 				stagger: 0.02,
@@ -55,7 +53,7 @@ export default class Preloader extends Component {
 			})
 
 			this.hidePreloader.to(
-				this.element,
+				this.preloader,
 				{
 					duration: 1.2,
 					ease: 'expo.out',
@@ -64,31 +62,33 @@ export default class Preloader extends Component {
 				'-=0.2'
 			)
 
-			this.hidePreloader.from(
-				this.elements.title,
-				{
-					duration: 0.8,
-					ease: 'expo.out',
-					y: '10%',
-					autoAlpha: 0,
-				},
-				'-=1'
-			)
-
-			this.hidePreloader.from(
-				this.elements.subtitle,
-				{
-					duration: 0.8,
-					ease: 'expo.out',
-					y: '30%',
-					autoAlpha: 0,
-				},
-				'-=0.9'
-			)
+			if (this.title) {
+				this.hidePreloader.from(
+					this.title,
+					{
+						duration: 0.8,
+						ease: 'expo.out',
+						y: '10%',
+						autoAlpha: 0,
+					},
+					'-=1'
+				)
+				this.hidePreloader.from(
+					this.subtitle,
+					{
+						duration: 0.8,
+						ease: 'expo.out',
+						y: '30%',
+						autoAlpha: 0,
+					},
+					'-=0.9'
+				)
+			}
 
 			this.hidePreloader.call((_) => {
 				document.documentElement.classList.remove('--preloader')
 				this.emit('completed')
+				this.hidePreloader.kill()
 			})
 		})
 	}

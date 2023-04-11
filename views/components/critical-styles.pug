@@ -14,8 +14,8 @@ style(type='text/css').
     box-sizing: border-box;
   }
 
-  html { width: 100vw; min-height: 100%; }
-  body { width: 100%; min-height: 100%; overflow-x: hidden }
+  html { width: 100vw; min-height: 100%; overflow-x: hidden;}
+  body { width: 100%; min-height: 100%; }
 
   html {
     font-family: "Branch";
@@ -23,7 +23,6 @@ style(type='text/css').
     line-height: 1;
     background: #cdc9c4;
     color: #5b402f;
-    overflow-x: hidden;
   }
 
   html::before {
@@ -34,12 +33,36 @@ style(type='text/css').
     bottom: 0;
   }
 
-  html.--preloader {
-    overflow: hidden;
+  /* Grainy texture animation by Geoff Graham https://css-tricks.com/snippets/css/animated-grainy-texture/ */
+  body:before {
+    will-change: background-image;
+    animation: grain 10s steps(10) infinite;
+    background-image: url('./noise.png');
+    content: '';
+    height: 300%;
+    left: -50%;
+    opacity: 0.4;
+    position: fixed;
+    top: -100%;
+    width: 300%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  body.--preloader:before {
+    z-index: 9999;
+  }
+
+  .lenis.lenis-smooth:not(.--preloader) {
+    scroll-behavior: auto;
+  }
+
+  html.lenis {
+    height: auto;
   }
 
   .preloader {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     left: 0;
@@ -74,7 +97,7 @@ style(type='text/css').
   .preloader__text,
   .preloader__number {
     animation: fade-in .4s ease-in;
-    animation-delay: .6s;
+    animation-delay: .8s;
     animation-fill-mode: forwards;
   }
 
@@ -86,24 +109,6 @@ style(type='text/css').
         font-size: 6rem;
         bottom: 10rem;
       }
-  }
-
-  .border-mask--top,
-  .border-mask--bottom {
-    background-color: #cdc9c4;
-    position: fixed;
-    left: 0;
-    height: 5px;
-    width: 100%;
-    z-index: 999;
-  }
-
-  .border-mask--top {
-    top: 0;
-  }
-
-  .border-mask--bottom {
-    bottom: 0;
   }
 
   @keyframes fade-in {
@@ -119,26 +124,6 @@ style(type='text/css').
 
   section {
     width: 100%
-  }
-
-  /* Grainy texture animation by Geoff Graham https://css-tricks.com/snippets/css/animated-grainy-texture/ */
-  body:before {
-    will-change: background-image;
-    animation: grain 10s steps(10) infinite;
-    background-image: url('./noise.png');
-    content: '';
-    height: 300%;
-    left: -50%;
-    opacity: 0.4;
-    position: fixed;
-    top: -100%;
-    width: 300%;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  body.--preloader:before {
-    z-index: 9999;
   }
 
   @keyframes grain {

@@ -8,7 +8,7 @@ module.exports = merge(config, {
 
 	cache: false,
 
-	devtool: 'source-map',
+	devtool: 'inline-source-map',
 
 	devServer: {
 		devMiddleware: {
