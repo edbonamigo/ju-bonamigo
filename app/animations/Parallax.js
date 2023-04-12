@@ -34,6 +34,7 @@ export default class Parallax {
 		this.tweens.forEach((tween) => {
 			tween.kill()
 		})
+
 		return null
 	}
 }

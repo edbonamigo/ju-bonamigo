@@ -13,6 +13,7 @@ import lazyLoad from 'utils/lazy-load'
 import {
 	Hero, //
 	Parallax,
+	About,
 } from 'animations'
 
 class App {
@@ -23,7 +24,7 @@ class App {
 	preload() {
 		this.preloader = new Preloader()
 		this.preloader.once('loaded', () => this.initSPA())
-		this.preloader.once('completed', () => scroll.start())
+		this.preloader.once('completed', () => lenis.start())
 	}
 
 	initSPA() {
@@ -34,11 +35,13 @@ class App {
 		barba.hooks.afterEnter(({ next }) => {
 			setTimeout(() => {
 				this.parallax = new Parallax().triggers()
+				this.about = new About().triggers()
 			}, 1000)
 		})
 
 		barba.hooks.beforeLeave(({ next }) => {
 			this.parallax = this.parallax.destroy()
+			this.about = this.About.destroy()
 		})
 
 		barba.init({
@@ -62,23 +65,23 @@ class App {
 /**
  * Smooth Scroll.
  */
-const scroll = new Lenis({
+const lenis = new Lenis({
 	duration: 1.2,
 })
 
 function raf(time) {
-	scroll.raf(time)
+	lenis.raf(time)
 	requestAnimationFrame(raf)
 }
 requestAnimationFrame(raf)
 
-scroll.on('scroll', ScrollTrigger.update)
+lenis.on('scroll', ScrollTrigger.update)
 gsap.ticker.add((time) => {
-	scroll.raf(time * 1000)
+	lenis.raf(time * 1000)
 })
 
-window.scroll = scroll
-scroll.stop()
+window.lenis = lenis
+lenis.stop()
 
 /**
  * Entry point.
