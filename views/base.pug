@@ -41,13 +41,12 @@ html(lang="pt-br" class="--preloader")
 		include ./components/preloader
 		include ./components/navigation
 
-		main.content#content(data-template=template data-barba="container" data-barba-namespace="home")
+		main.content#content(data-template=template data-barba="container" data-barba-namespace=template)
 			block content
 
-			include ./layouts/parallax
-			include ./layouts/about
-			include ./layouts/contact
-		
+		include ./layouts/parallax
+		include ./layouts/about
+		include ./layouts/contact
 		include ./components/footer
 
 	//- script(src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.0/bundled/lenis.js")

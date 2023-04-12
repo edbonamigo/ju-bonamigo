@@ -10,7 +10,10 @@ gsap.registerPlugin(ScrollTrigger)
 import Preloader from 'components/Preloader'
 import lazyLoad from 'utils/lazy-load'
 
-import { Hero } from 'animations'
+import {
+	Hero, //
+	Parallax,
+} from 'animations'
 
 class App {
 	constructor() {
@@ -19,31 +22,37 @@ class App {
 
 	preload() {
 		this.preloader = new Preloader()
-		// this.preloader.once('loaded', this.initSPA.bind(this))
-		this.preloader.once('completed', this.enableScroll.bind(this))
+		this.preloader.once('loaded', () => this.initSPA())
+		this.preloader.once('completed', () => scroll.start())
 	}
 
-	enableScroll() {
-		lenis.start()
-	}
-
-	initPage() {
-		barba.hooks.once(() => setTimeout(() => window.scrollTo(0, 0), 100))
-
-		barba.hooks.beforeEnter((data) => {
-			smoothScroll.start()
+	initSPA() {
+		barba.hooks.beforeEnter(({ next }) => {
 			lazyLoad()
 		})
 
-		barba.hooks.afterEnter((data) => {
-			this.hero.border()
+		barba.hooks.afterEnter(({ next }) => {
+			setTimeout(() => {
+				this.parallax = new Parallax().triggers()
+			}, 1000)
+		})
 
-			this.hero.createTriggers()
+		barba.hooks.beforeLeave(({ next }) => {
+			this.parallax = this.parallax.destroy()
 		})
 
 		barba.init({
-			// TODO: ONCE: scroll on top!
-
+			views: [
+				{
+					namespace: 'home',
+					beforeEnter({ next }) {
+						this.hero = new Hero(next.container).triggers()
+					},
+					beforeLeave() {
+						this.hero = this.hero.destroy()
+					},
+				},
+			],
 			// Disable links when transitioning.
 			preventRunning: true,
 		})
@@ -53,23 +62,23 @@ class App {
 /**
  * Smooth Scroll.
  */
-const lenis = new Lenis({
+const scroll = new Lenis({
 	duration: 1.2,
 })
 
 function raf(time) {
-	lenis.raf(time)
+	scroll.raf(time)
 	requestAnimationFrame(raf)
 }
 requestAnimationFrame(raf)
 
-lenis.on('scroll', ScrollTrigger.update)
+scroll.on('scroll', ScrollTrigger.update)
 gsap.ticker.add((time) => {
-	lenis.raf(time * 1000)
+	scroll.raf(time * 1000)
 })
 
-window.lenis = lenis
-lenis.stop()
+window.scroll = scroll
+scroll.stop()
 
 /**
  * Entry point.

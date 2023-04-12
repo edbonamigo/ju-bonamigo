@@ -1,6 +1,5 @@
 import EventEmitter from 'events'
 
-import each from 'lodash/each'
 import GSAP from 'gsap'
 import lazyLoad from 'utils/lazy-load'
 import { split } from 'utils/text'

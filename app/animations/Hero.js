@@ -1,71 +1,61 @@
-import Component from '../classes/Component'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-/**
- * Animations:
- * OK - Round bottom Border on image after "lenis.start()"
- * Parallax on image and text:
- *  Image Mark, image translate down with scroll
- *  Text translate down with scroll and hide before image touch it
- *
- */
-
-export default class Hero extends Component {
-	constructor() {
-		super({
-			element: '.hero',
-			elements: {
-				mask: '.hero__image-mask',
-				titles: '.hero__title_wrapper',
-			},
-		})
+export default class Hero {
+	constructor(container) {
+		this.hero = container.querySelector('.hero')
+		this.mask = container.querySelector('.hero__image-mask')
+		this.titles = container.querySelector('.hero__title_wrapper')
+		this.tl = undefined
 	}
 
-	border() {
-		gsap.to(this.elements.mask, {
-			borderRadius: '0 0 +=15% +=15%',
-			duration: 0.6,
-			ease: 'power3.out',
-		})
-	}
-
-	createTriggers() {
-		gsap
+	triggers() {
+		this.tl = gsap
 			.timeline({
 				scrollTrigger: {
-					trigger: this.element,
+					trigger: this.hero,
 					start: 'top top',
-					end: '75% 15%',
+					end: '75% 5%',
 					scrub: true,
 					// markers: true,
-					onLeave: () => console.log('TODO: Show menu. Emit: "toggleMenu" [?]'),
+					// onLeave: () => console.log('TODO: Show menu. Emit: "toggleMenu" [?]'),
 					// onEnterBack: () => console.log('TODO: Hide menu'),
 				},
 			})
 			.to(
-				this.elements.mask,
+				this.mask,
 				{
 					borderRadius: '0 0 +=45% +=45%',
-					ease: 'power1.in',
+					ease: 'power2.in',
 					y: '-30%',
 				},
 				0
 			)
 			.to(
-				this.elements.titles,
+				this.titles,
 				{
-					y: '1%',
-					autoAlpha: 0,
-					ease: 'power4.out',
+					y: '15%',
+					// autoAlpha: 0,
+					ease: 'power2.out',
 				},
 				0
 			)
+			.to(
+				this.titles,
+				{
+					autoAlpha: 0,
+					ease: 'power2.out',
+				},
+				'-=0.4'
+			)
+
+		return this
 	}
 
-	getTriggers() {
-		return 'Hero Scroll Triggers'
+	destroy() {
+		this.tl.kill()
+		return null
 	}
 }
