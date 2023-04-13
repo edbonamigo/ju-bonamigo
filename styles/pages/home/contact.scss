@@ -2,10 +2,10 @@
 	display: flex;
 	flex-flow: column;
 	align-items: flex-end;
-	justify-content: center;
+	justify-content: flex-start;
 	position: relative;
 	width: 100%;
-	height: 100vh;
+	height: 83vh;
 
 	@include media('<phone') {
 		align-items: center;
@@ -14,15 +14,20 @@
 }
 
 .contact__image_wrapper {
-	position: absolute;
+	position: fixed;
 	height: 100vh;
 	width: 100%;
+	left: 0;
+	top: 0;
+	opacity: 0;
+	pointer-events: none;
+	z-index: z('content');
 }
 
 .contact__image {
 	@extend %cover;
-	object-position: right;
-	z-index: z('noise');
+	object-position: right bottom;
+	z-index: z('content');
 
 	@include media('<phone') {
 		object-position: 43% 0;
@@ -66,5 +71,5 @@
 
 .contact__link__text {
 	@extend %text-50;
-	color: $millbrook;
+	color: $river-bed;
 }

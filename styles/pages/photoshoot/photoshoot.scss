@@ -95,7 +95,7 @@
 .photoshoot__more__link {
 	@extend %text-75;
 
-	color: $millbrook;
+	color: $river-bed;
 
 	@include media('<phone') {
 		font-size: 10rem;

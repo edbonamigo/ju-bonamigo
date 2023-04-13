@@ -11,9 +11,10 @@ import Preloader from 'components/Preloader'
 import lazyLoad from 'utils/lazy-load'
 
 import {
-	Hero, //
+	About, //
+	Contact,
+	Hero,
 	Parallax,
-	About,
 } from 'animations'
 
 class App {
@@ -36,12 +37,14 @@ class App {
 			setTimeout(() => {
 				this.parallax = new Parallax().triggers()
 				this.about = new About().triggers()
+				this.contact = new Contact().triggers()
 			}, 1000)
 		})
 
 		barba.hooks.beforeLeave(({ next }) => {
 			this.parallax = this.parallax.destroy()
-			this.about = this.About.destroy()
+			this.about = this.about.destroy()
+			this.contact = this.contact.destroy()
 		})
 
 		barba.init({

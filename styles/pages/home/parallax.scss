@@ -10,6 +10,10 @@
 	width: 100%;
 	overflow: hidden;
 	margin-top: -5%;
+
+	&:nth-child(2) .parallax__image {
+		object-position: center 30%;
+	}
 }
 
 .parallax__image {
