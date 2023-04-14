@@ -20,6 +20,8 @@ export default class Hero {
 					end: '75% 5%',
 					scrub: true,
 					// markers: true,
+					onLeave: () => (this.hero.style.pointerEvents = 'none'),
+					onEnterBack: () => (this.hero.style.pointerEvents = 'unset'),
 					// onLeave: () => console.log('TODO: Show menu. Emit: "toggleMenu" [?]'),
 					// onEnterBack: () => console.log('TODO: Hide menu'),
 				},
@@ -37,7 +39,6 @@ export default class Hero {
 				this.titles,
 				{
 					y: '15%',
-					// autoAlpha: 0,
 					ease: 'power2.out',
 				},
 				0
@@ -56,6 +57,8 @@ export default class Hero {
 
 	destroy() {
 		this.tl.kill()
+
+		ScrollTrigger.getAll().forEach((st) => st.kill())
 		return null
 	}
 }

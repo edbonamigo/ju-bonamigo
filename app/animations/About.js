@@ -40,6 +40,8 @@ export default class Hero {
 
 	destroy() {
 		this.tl.kill()
+
+		ScrollTrigger.getAll().forEach((st) => st.kill())
 		return null
 	}
 }

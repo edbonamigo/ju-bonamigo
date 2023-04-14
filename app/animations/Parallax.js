@@ -35,6 +35,7 @@ export default class Parallax {
 			tween.kill()
 		})
 
+		ScrollTrigger.getAll().forEach((st) => st.kill())
 		return null
 	}
 }
