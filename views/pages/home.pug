@@ -20,7 +20,11 @@ block content
 						each title in niche.data.title.split(' ')
 							span=title
 					ul.niches__list
+						li.niches__item
+								.niches__item__image_wrapper
+									img.niches__item__image(data-lazy="img" data-src=niche.data.main_image.url alt=niche.data.main_image.alt draggable="false")
 						each photoshoot in niche.data.photoshoots
 							li.niches__item
-								img.niches__item__image(data-lazy="img" data-src=photoshoot.image.url alt=photoshoot.image.alt draggable="false")
+								.niches__item__image_wrapper
+									img.niches__item__image(data-lazy="img" data-src=photoshoot.image.url alt=photoshoot.image.alt draggable="false")
 
