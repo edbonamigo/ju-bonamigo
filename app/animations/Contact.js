@@ -36,10 +36,6 @@ export default class Hero {
 					start: 'top bottom',
 					end: 'bottom bottom',
 					scrub: true,
-<<<<<<< HEAD
-					duration: 1,
-=======
->>>>>>> 203ed613a1b482a4d01a61d74a51c8d1b28acdda
 				},
 			})
 			.fromTo(this.socialMediaTitle, { x: '30%' }, { x: '4%' }, 0)
