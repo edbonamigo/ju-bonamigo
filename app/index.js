@@ -14,6 +14,7 @@ import {
 	About, //
 	Contact,
 	Hero,
+	Niches,
 	Parallax,
 } from 'animations'
 
@@ -29,22 +30,22 @@ class App {
 	}
 
 	initSPA() {
-		barba.hooks.beforeEnter(({ next }) => {
+		barba.hooks.beforeEnter(() => {
 			lazyLoad()
 		})
 
-		barba.hooks.afterEnter(({ next }) => {
+		barba.hooks.afterEnter(() => {
 			setTimeout(() => {
-				this.parallax = new Parallax().triggers()
 				this.about = new About().triggers()
 				this.contact = new Contact().triggers()
+				this.parallax = new Parallax().triggers()
 			}, 1000)
 		})
 
-		barba.hooks.beforeLeave(({ next }) => {
-			this.parallax = this.parallax.destroy()
+		barba.hooks.beforeLeave(() => {
 			this.about = this.about.destroy()
 			this.contact = this.contact.destroy()
+			this.parallax = this.parallax.destroy()
 		})
 
 		barba.init({
@@ -53,9 +54,11 @@ class App {
 					namespace: 'home',
 					beforeEnter({ next }) {
 						this.hero = new Hero(next.container).triggers()
+						this.niches = new Niches(next.container).triggers()
 					},
 					beforeLeave() {
 						this.hero = this.hero.destroy()
+						this.niches = this.niches.destroy()
 					},
 				},
 			],

@@ -9,51 +9,47 @@ export default class Hero {
 		this.image = document.querySelector('.contact__image_wrapper')
 		this.socialMediaTitle = document.querySelector('.--social-media')
 		this.phoneTitle = document.querySelector('.--phone')
-		this.tl = undefined
+		this.toggleBackgound = undefined
+		this.textSlideLeft = undefined
+		this.tweens = []
 	}
 
 	triggers() {
-		gsap
+		this.toggleBackgound = gsap
 			.timeline({
 				scrollTrigger: {
 					trigger: this.contact,
 					start: 'top 75%',
-					end: 'bottom bottom',
-					toggleActions: 'play pause pause reverse',
-					// markers: true,
+					end: '75% bottom',
+					scrub: true,
 				},
 			})
-			.fromTo(
-				[this.image],
-				{
-					duration: 1,
-					autoAlpha: 0,
-					stagger: 0.2,
-					ease: 'expo.out',
-				},
-				{
-					autoAlpha: 1,
-				}
-			)
+			.to(this.image, {
+				autoAlpha: 1,
+				ease: 'linear',
+			})
 
-		gsap
+		this.textSlideLeft = gsap
 			.timeline({
 				scrollTrigger: {
 					trigger: this.contact,
 					start: 'top bottom',
 					end: 'bottom bottom',
 					scrub: true,
-					// markers: true,
+					duration: 1,
 				},
 			})
 			.fromTo(this.socialMediaTitle, { x: '30%' }, { x: '4%' }, 0)
-			.fromTo(this.phoneTitle, { x: '50%' }, { x: '16%' }, 0)
+			.fromTo(this.phoneTitle, { x: '50%' }, { x: '13%' }, 0.2)
+
+		this.tweens.push(this.toggleBackgound)
+		this.tweens.push(this.textSlideLeft)
 
 		return this
 	}
 
 	destroy() {
-		this.tl.kill()
+		this.tweens.forEach((tween) => tween.kill())
 
 		ScrollTrigger.getAll().forEach((st) => st.kill())
 		return null

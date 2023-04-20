@@ -18,7 +18,7 @@ export default class Hero {
 					trigger: this.about,
 					start: 'top center',
 					end: 'center 30%',
-					toggleActions: 'play reverse play reverse',
+					toggleActions: 'play complete complete reverse',
 					// markers: true,
 				},
 			})

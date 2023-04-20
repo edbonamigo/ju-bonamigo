@@ -7,7 +7,7 @@
 .niches_wrapper {
 	height: 100vh;
 	padding: 12vh 0 8vh;
-	margin-bottom: 20vh;
+	margin-bottom: 30vh;
 
 	@include media('<phone') {
 		height: 70vh;
@@ -16,6 +16,8 @@
 
 .niches__link {
 	height: 100%;
+	width: 0;
+	margin: 0 40% 0 60%;
 	position: relative;
 
 	&:last-child {
@@ -31,7 +33,6 @@
 	position: fixed;
 	left: 15vw;
 	top: 30%;
-	opacity: 0;
 	pointer-events: none;
 	z-index: z('titles');
 
@@ -40,13 +41,12 @@
 	}
 
 	@include media('<phone') {
-		left: 50%;
+		left: 8vw;
 		top: 15%;
-		transform: translateX(-50%);
 	}
 
 	span:not(:first-child) {
-		margin-left: 25rem;
+		margin-left: 15rem;
 	}
 }
 
@@ -55,6 +55,12 @@
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: nowrap;
+
+	@include media('<phone') {
+		position: absolute;
+		width: 100vw;
+		left: -60vw;
+	}
 }
 
 .niches__item {
@@ -96,14 +102,15 @@
 .niches_wrapper:nth-child(odd) {
 	.niches__item:nth-child(1) {
 		top: -6%;
+		margin-right: 3rem;
 
-		.niches__item__image {
-			transform: scale(0.98);
+		.niches__item__image_wrapper {
+			height: 97%;
 		}
 	}
 
 	.niches__item:nth-child(2) {
-		top: 7%;
+		top: 3%;
 
 		.niches__item__image {
 			transform: scale(0.85);
@@ -112,6 +119,7 @@
 
 	.niches__item:nth-child(3) {
 		top: 0;
+		margin-left: 3rem;
 
 		.niches__item__image {
 			transform: scale(0.92);
@@ -122,6 +130,7 @@
 .niches_wrapper:nth-child(even) {
 	.niches__item:nth-child(1) {
 		top: -6%;
+		margin-right: 3rem;
 
 		.niches__item__image {
 			transform: scale(1);
@@ -129,7 +138,7 @@
 	}
 
 	.niches__item:nth-child(2) {
-		top: 0;
+		top: -3%;
 
 		.niches__item__image {
 			transform: scale(0.835);
@@ -137,12 +146,16 @@
 	}
 
 	.niches__item:nth-child(3) {
-		top: -6%;
+		top: 4%;
+		margin-left: 3rem;
 
 		.niches__item__image {
 			transform: scale(0.85);
 		}
 	}
+}
+.niches__item__image_wrapper {
+	height: 100%;
 }
 
 .niches__item__image {
