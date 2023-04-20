@@ -36,11 +36,17 @@ export default class Hero {
 					start: 'top bottom',
 					end: 'bottom bottom',
 					scrub: true,
+<<<<<<< HEAD
 					duration: 1,
+=======
+>>>>>>> 203ed613a1b482a4d01a61d74a51c8d1b28acdda
 				},
 			})
 			.fromTo(this.socialMediaTitle, { x: '30%' }, { x: '4%' }, 0)
 			.fromTo(this.phoneTitle, { x: '50%' }, { x: '13%' }, 0.2)
+
+		this.tweens.push(this.toggleBackgound)
+		this.tweens.push(this.textSlideLeft)
 
 		this.tweens.push(this.toggleBackgound)
 		this.tweens.push(this.textSlideLeft)
