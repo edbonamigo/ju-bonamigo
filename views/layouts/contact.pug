@@ -2,14 +2,14 @@ section.contact(id='contato')
 	.contact__image_wrapper
 		img.contact__image(data-lazy="img" data-src=home.data.background.url alt=home.data.background.alt)
 
-	a.contact__link(href=home.data.social_media_link.url target="_blank" draggable="false")
-		.contact__link__title_wrapper.--social-media
+	a.contact__link.--social-media(href=home.data.social_media_link.url target="_blank" draggable="false")
+		.contact__link__title_wrapper
 			h4.contact__link__title=home.data.social_media_title
 		.contact__link__text_wrapper
 			h5.contact__link__text=home.data.social_media_user
 
-	a.contact__link(href=home.data.phone_link target="_blank" draggable="false")
-		.contact__link__title_wrapper.--phone
+	a.contact__link.--phone(href=home.data.phone_link target="_blank" draggable="false")
+		.contact__link__title_wrapper
 			h4.contact__link__title=home.data.phone_title
 		.contact__link__text_wrapper 
 			h5.contact__link__text=home.data.phone_number

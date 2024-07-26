@@ -4,6 +4,7 @@ block variables
 	- var template = 'home'
 
 block content
+	
 	section.hero
 		.hero__title_wrapper
 			h1.hero__title=home.data.title
@@ -13,18 +14,15 @@ block content
 				img.hero__image(data-lazy="img" data-src=home.data.home_images[random].image.url, alt=home.data.home_images[random].image.alt draggable="false")
 
 	section.niches
-		each niche in niches
+		each niche in nichesData
+			
 			.niches_wrapper(id=niche.uid)
 				a.niches__link(href=`/${niche.uid}` draggable="false")
-					h3.niches__link__title
-						each title in niche.data.title.split(' ')
-							span=title
 					ul.niches__list
-						li.niches__item
-								.niches__item__image_wrapper
-									img.niches__item__image(data-lazy="img" data-src=niche.data.main_image.url alt=niche.data.main_image.alt draggable="false")
-						each photoshoot in niche.data.photoshoots
+						each image in niche.images
 							li.niches__item
 								.niches__item__image_wrapper
-									img.niches__item__image(data-lazy="img" data-src=photoshoot.image.url alt=photoshoot.image.alt draggable="false")
-
+									img.niches__item__image(data-lazy="img" data-src=image.url alt=image.alt draggable="false")
+					h3.niches__link__title
+						each title in niche.data.title.split(' ')
+							span=title.replace('_', ' ')

@@ -18,15 +18,6 @@
 	background: linear-gradient(90deg, $cloud 0%, $river-bed 100%);
 }
 
-html {
-	font-size: calc(100vw / 1512 * 10);
-	line-height: 1;
-
-	// @include media('<phone') {
-	// 	font-size: calc(100vw / 750 * 10);
-	// }
-}
-
 body {
 	font-size: 3rem;
 	font-family: $font-primary;

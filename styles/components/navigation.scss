@@ -1,61 +1,61 @@
 .navigation {
-	@extend %cover;
+  @extend %cover;
 
-	position: fixed;
-	height: auto;
-	padding: 2rem 3rem 1rem;
-	z-index: z('navigation');
+  position: fixed;
+  height: auto;
+  padding: 3rem 4rem;
+  z-index: z('navigation');
 
-	@include media('<phone') {
-		padding: 4rem 4rem 1rem;
-	}
+  @include media('<phone') {
+    padding: 4rem 4rem 1rem;
+  }
 }
 
 .navigation.a {
-	display: block;
+  display: block;
 }
 
 .navigation__list {
-	display: flex;
-	justify-content: flex-start;
-	align-items: baseline;
-	position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  position: relative;
 }
 
 .navigation__list__item {
-	margin-right: 2.5rem;
+  margin-right: 2.5rem;
 }
 
 .navigation__list__item:last-child {
-	margin: 0 0 0 auto;
+  margin: 0 0 0 auto;
 }
 
 .navigation__link {
-	@extend %text-30;
+  @extend %text-30;
 
-	color: $spring-wood;
-	opacity: 0.92;
-	position: relative;
-	z-index: z('navigation');
+  color: $spring-wood;
+  opacity: 0.92;
+  position: relative;
+  z-index: z('navigation');
 }
 
 .navigation__link.navigation__link--logo {
-	@extend %text-40;
+  @extend %text-40;
 
-	color: $spring-wood;
-	opacity: 0.92;
-	position: relative;
-	z-index: z('navigation');
+  color: $spring-wood;
+  opacity: 0.92;
+  position: relative;
+  z-index: z('navigation');
 }
 
 .navigation__link--back {
-	position: absolute;
-	left: 3rem;
-	bottom: 3rem;
+  position: absolute;
+  left: 3rem;
+  bottom: 3rem;
 }
 
 .navigation__link--niche,
 .navigation__link--photoshoot,
 .navigation__link--back {
-	display: none;
+  display: none;
 }

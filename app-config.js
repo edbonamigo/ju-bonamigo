@@ -12,7 +12,7 @@ dotenv.config()
 
 const app = express()
 
-app.set('port', process.env.PORT)
+app.set('port', process.env.CLIENT_PORT)
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
@@ -29,11 +29,11 @@ app.use(express.static(path.join(__dirname, 'dist')))
 app.use(errorHandler())
 
 app.use((req, res, next) => {
-	res.locals = {
-		prismicH,
-		keepNumbers,
-	}
-	next()
+  res.locals = {
+    prismicH,
+    keepNumbers,
+  }
+  next()
 })
 
 module.exports = app

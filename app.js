@@ -3,77 +3,59 @@ const client = require('./app-client-config.js')
 const dotenv = require('dotenv')
 dotenv.config()
 
-const port = process.env.PORT
+const port = process.env.CLIENT_PORT
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 app.use(async (req, res, next) => {
-	const [home, meta] = await Promise.all([
-		client.getSingle('home'),
-		client.getSingle('metadata'),
-	])
+  const [home, meta] = await Promise.all([
+    client.getSingle('home'),
+    client.getSingle('metadata'),
+  ])
 
-	res.locals.defaults = {
-		home,
-		meta,
-		random: Math.floor(Math.random() * home.data.home_images.length),
-	}
+  res.locals.defaults = {
+    home,
+    meta,
+    random: Math.floor(Math.random() * home.data.home_images.length),
+  }
 
-	next()
+  next()
 })
 
 app.get('/', async (req, res) => {
-	const niches = await client.getAllByType('niche', {
-		fetchLinks: 'photoshoot.title',
-	})
+  const niches = await client.getAllByType('niche', {})
+  let images = []
+  let nichesData = []
 
-	niches.forEach((niche) => {
-		niche.data.photoshoots.forEach((photoshoot) => {
-			photoshoot.title = photoshoot?.photoshoot?.data?.title
-		})
-	})
+  niches.forEach(niche => {
+    images = niche.data.images_home.map(item => item.image);
+    //makes the main image the second of the array
+    images.splice(1, 0, niche.data.image)
 
-	res.render('pages/home', {
-		...res.locals.defaults,
-		niches,
-	})
+    niche.images = images
+    nichesData.push(niche)
+  })
+
+  res.render('pages/home', {
+    ...res.locals.defaults,
+    nichesData,
+  })
 })
 
 app.get('/:niche', async (req, res) => {
-	const uid = req.params.niche
-	const content = await client.getByUID('niche', uid, {
-		fetchLinks: 'photoshoot.title',
-	})
+  const uid = req.params.niche
+  const niche = await client.getByUID('niche', uid)
 
-	res.render('pages/niche', {
-		...res.locals.defaults,
-		content,
-		uid,
-	})
-})
-
-app.get('/:niche/:uid', async (req, res) => {
-	const [photoshoot, niche] = await Promise.all([
-		client.getByUID('photoshoot', req.params.uid),
-		client.getByUID('niche', req.params.niche, {
-			fetchLinks: 'photoshoot.uid',
-		}),
-	])
-
-	let mainImage
-
-	niche.data.photoshoots.forEach((i) => {
-		if (i.photoshoot.data.uid == req.params.uid) {
-			mainImage = i.image
-		}
-	})
-
-	res.render('pages/photoshoot', {
-		...res.locals.defaults,
-		niche,
-		photoshoot,
-		mainImage,
-	})
+  res.render('pages/photoshoot', {
+    ...res.locals.defaults,
+    niche,
+    uid,
+  })
 })
 
 app.listen(port, () => {
-	console.log(`--------> App listening at http://localhost:${port}`)
+  console.log(`--------> App listening at http://localhost:${port}`)
 })

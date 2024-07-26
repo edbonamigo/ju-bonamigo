@@ -1,0 +1,7 @@
+section.hero
+	.hero__title_wrapper
+		h1.hero__title=home.data.title
+		h2.hero__subtitle=home.data.subtitle
+	.hero__image-mask
+		figure.hero__image_wrapper
+			img.hero__image(data-lazy="img" data-src=home.data.home_images[random].image.url, alt=home.data.home_images[random].image.alt draggable="false")

@@ -1,75 +1,85 @@
 .contact {
-	display: flex;
-	flex-flow: column;
-	align-items: flex-end;
-	justify-content: flex-start;
-	position: relative;
-	width: 100%;
-	height: 80vh;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  height: 80vh;
 
-	@include media('<phone') {
-		align-items: center;
-		justify-content: flex-end;
-	}
+  @include media('<phone') {
+    align-items: center;
+    justify-content: flex-end;
+  }
 }
 
 .contact__image_wrapper {
-	position: fixed;
-	height: 100vh;
-	width: 100%;
-	left: 0;
-	top: 0;
-	opacity: 0;
-	pointer-events: none;
-	z-index: z('content');
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: z('content');
 }
 
 .contact__image {
-	@extend %cover;
-	object-position: right bottom;
-	z-index: z('content');
+  @extend %cover;
+  object-position: right bottom;
+  z-index: z('content');
+  transform: scaleX(-1);
 
-	@include media('<phone') {
-		object-position: 43% 0;
-	}
+  @include media('<phone') {
+    object-position: 43% 0;
+  }
 }
 
 .contact__link {
-	height: 25rem;
-	margin: 0 15rem;
-	text-align: right;
-	z-index: z('content');
-	transform: translateY(-5vh);
+  height: 25rem;
+  margin: 0 7vw;
+  text-align: left;
+  z-index: z('content');
+  transform: translateY(-5vh);
 
-	@include media('<phone') {
-		height: 30rem;
-		text-align: left;
-		margin-bottom: 7rem;
-	}
+  @include media('<phone') {
+    height: 30rem;
+    text-align: left;
+    margin-bottom: 7rem;
+  }
 }
 
+
 .contact__link:last-child {
-	@include media('<phone') {
-		margin-bottom: 18vh;
-	}
+  @include media('<phone') {
+    margin-bottom: 18vh;
+  }
 }
 
 .contact__link__title_wrapper {
-	mix-blend-mode: screen;
+  mix-blend-mode: screen;
 }
 
 .contact__link__title {
-	@extend %text-200;
+  @extend %text-200;
 }
 
+
 .contact__link__text_wrapper {
-	margin-left: 20rem;
-	position: relative;
-	transform: translateY(-110%);
-	z-index: z('titles');
+  position: relative;
+  transform: translateY(-110%);
+  z-index: z('titles');
 }
 
 .contact__link__text {
-	@extend %text-50;
-	color: $river-bed;
+  @extend %text-50;
+  color: $river-bed;
+}
+
+.--social-media .contact__link__text {
+  margin-left: 10rem;
+}
+
+.--phone .contact__link__text {
+  margin-left: 5rem;
 }

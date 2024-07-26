@@ -3,32 +3,28 @@ extends ../base.pug
 block variables
 	- var template = 'photoshoot'
 
-block content
-	article.photoshoot
-			
-		section.photoshoot__hero
-			.photoshoot__hero__title_wrapper
-				h1.photoshoot__hero__title=photoshoot.data.title
-				
-			.photoshoot__hero__image_wrapper
-				img.photoshoot__hero__image(data-lazy="img" data-src=mainImage.url alt=mainImage.alt)
 
-		each slice in photoshoot.data.body
-			if slice.slice_type == 'grid_imagens'
+block content
+		section.photoshoot__hero#photoshoot
+			.photoshoot__hero__title_wrapper
+				h1.photoshoot__hero__title=niche.data.title.replace('_', ' ')
+			.photoshoot__hero__image_wrapper
+				img.photoshoot__hero__image(data-lazy="img" data-src=niche.data.image.url alt=niche.data.image.alt)
+
+		each slice in niche.data.body
+			if slice.slice_type == 'grid_imagens1'
 				section.photoshoot__grid
 					each media in slice.items
-						if media.imagem1.url !== undefined
+						if media.image1.url !== undefined
 							figure.photoshoot__grid__image_wrapper
-								img.photoshoot__grid__image(data-lazy="img" data-src=media.imagem1.url alt=media.imagem1.alt)
+								img.photoshoot__grid__image(data-lazy="img" data-src=media.image1.url alt=media.image1.alt)
 		
-			if slice.slice_type == 'imagem_destaque'
+			if slice.slice_type == 'imagem_unica'
 				section.photoshoot__full
-					each media in slice.items
-						if media.image.url !== undefined
-							figure.photoshoot__full__image_wrapper
-								img.photoshoot__full__image(data-lazy="img" data-src=media.image.url alt=media.image.alt)
+					if slice.primary.image1.url !== undefined
+						figure.photoshoot__full__image_wrapper
+							img.photoshoot__full__image(data-lazy="img" data-src=slice.primary.image1.url alt=slice.primary.image1.alt)
 
 		.photoshoot__more
 			a.photoshoot__more__link(href="#")
-				| Mais Ensaios 
-			
+				| Contato
