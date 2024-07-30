@@ -32,12 +32,12 @@ export default class Preloader extends EventEmitter {
     this.numberText.innerHTML = `${percentLoaded}%`
 
     if (percentLoaded === 100) {
-      // this.onLoaded()
+      this.onLoadedRemovePreloader()
       this.emit('loaded')
     }
   }
 
-  onLoaded() {
+  onLoadedRemovePreloader() {
     return new Promise((resolve) => {
       this.hidePreloader = GSAP.timeline({
         delay: 1.5,
