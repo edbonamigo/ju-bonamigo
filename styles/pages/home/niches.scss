@@ -37,10 +37,6 @@
   pointer-events: none;
   z-index: z('titles');
 
-  .niches_wrapper:first-child & {
-    // opacity: 1;
-  }
-
   @include media('<tablet') {
     left: 8vw;
     top: 30%;
