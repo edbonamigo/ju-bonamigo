@@ -44,20 +44,11 @@ export default class HomeNiches {
         if (index <= 2) {
           const randomY = this._randomY(index)
 
-          this.imagesSlide.fromTo(
-            image,
-            {
-              x: '30%',
-              yPercent: randomY,
-            },
-            {
-              x: '-10%',
-              yPercent: -randomY,
-            },
-            0
-          )
+          this.imagesSlide.fromTo( image, 
+            { x: '30%', yPercent: randomY }, 
+            { x: '-10%', yPercent: -randomY }, 0)
         }
-      })
+      })    
 
       this.titlesIn = gsap
         .timeline({
