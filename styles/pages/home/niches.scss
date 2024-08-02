@@ -73,6 +73,7 @@
 .niches__item {
   height: 100%;
   position: absolute;
+  will-change: transform;
 
   &:nth-child(1) {
     transform-origin: right;
