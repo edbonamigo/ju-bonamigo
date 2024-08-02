@@ -13,7 +13,7 @@ export default class Parallax {
 		this.images.forEach((img) => {
 			const wrapper = img.parentElement
 			this.tween = gsap.to(img, {
-				y: '100%',
+				y: '115%',
 				scrollTrigger: {
 					trigger: wrapper,
 					start: 'top bottom',

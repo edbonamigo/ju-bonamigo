@@ -13,14 +13,22 @@
 	height: 100vh;
 	width: 100%;
 	overflow: hidden;
-	margin-top: -5%;
+	margin-top: -10%;
+
+  &:first-child {
+    margin-top: 0;
+  }
 
 	&:nth-child(2) .parallax__image {
 		object-position: center 30%;
 	}
 
-  @include media('<phone') {
-    height: 95vh;
+  @include media('<tablet') {
+    margin-top: -20%;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 }
 
