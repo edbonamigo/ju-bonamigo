@@ -9,8 +9,9 @@
   padding: 12vh 0 8vh;
   margin-bottom: 10vh;
 
-  @include media('<phone') {
+  @include media('<tablet') {
     height: 70vh;
+    margin-bottom: 0;
   }
 }
 
@@ -40,12 +41,16 @@
     // opacity: 1;
   }
 
-  @include media('<phone') {
+  @include media('<tablet') {
     left: 8vw;
-    top: 15%;
+    top: 30%;
+    font-size: calc(4rem*1.618*1.618*1.618) !important;
   }
 
   @include media('<desktop') {
+    font-size: calc(4rem*1.618*1.618);
+  }
+  @include media('>desktop') {
     font-size: calc(4rem*1.618*1.618);
   }
 

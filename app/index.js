@@ -17,15 +17,9 @@ import {
   Niches,
   Parallax,
 } from 'animations'
-import { cloneWith } from 'lodash'
-import bodyParser from 'body-parser'
 
 class App {
   constructor() {
-    this.preload()
-  }
-
-  preload() {
     this.preloader = new Preloader()
     this.preloader.once('loaded', () => this.initSPA())
     this.preloader.once('completed', () => lenis.start())
@@ -35,6 +29,10 @@ class App {
     barba.hooks.beforeEnter(() => {
       lazyLoad()
 
+      // if (!this.preloader.active) {
+      //   this.preloader.onLoadedRemovePreloader()
+      // }
+      
       lenis.scrollTo(0, { immediate: true });
     })
 
@@ -47,7 +45,6 @@ class App {
     })
 
     barba.hooks.beforeLeave(() => {
-
       this.about = this.about.destroy()
       this.contact = this.contact.destroy()
       this.parallax = this.parallax.destroy()
@@ -57,11 +54,11 @@ class App {
       views: [
         {
           namespace: 'home',
-          beforeEnter({ next }) {
+          beforeEnter:({ next }) => {
             this.hero = new Hero(next.container).triggers()
             this.niches = new Niches(next.container).triggers()
           },
-          beforeLeave() {
+          beforeLeave:() => {
             this.hero = this.hero.destroy()
             this.niches = this.niches.destroy()
           },
@@ -69,14 +66,9 @@ class App {
       ],
 
       transitions: [{
-        name: 'from-home',
-        from: {
-          namespace: [
-            'home'
-          ]
-        },
-        leave(data) {
-          console.log(data)
+        name: 'default-transition',
+        leave: ({next}) => {
+          this.preloader.transition(next)
         }
       }],
 

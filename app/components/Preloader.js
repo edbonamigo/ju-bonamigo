@@ -13,8 +13,10 @@ export default class Preloader extends EventEmitter {
     this.number = document.querySelector('.preloader__number')
     this.numberText = document.querySelector('.preloader__number__text')
     this.images = document.querySelectorAll('[data-lazy="img"]')
-    this.title = document.querySelector('.hero__title')
-    this.subtitle = document.querySelector('.hero__subtitle')
+    this.image = GSAP.utils.toArray(['.hero__image', '.photoshoot__hero__image'])
+    this.title = GSAP.utils.toArray(['.hero__title', '.photoshoot__hero__title'])
+    this.subtitle = GSAP.utils.toArray(['.hero__subtitle', '.photoshoot__hero__subtitle'])
+    this.active = true
 
     split({ element: this.text })
     this.spans = GSAP.utils.toArray('.preloader span')
@@ -32,64 +34,84 @@ export default class Preloader extends EventEmitter {
     this.numberText.innerHTML = `${percentLoaded}%`
 
     if (percentLoaded === 100) {
-      this.onLoadedRemovePreloader()
+      this.hide()
       this.emit('loaded')
     }
   }
 
-  onLoadedRemovePreloader() {
-    return new Promise((resolve) => {
-      this.hidePreloader = GSAP.timeline({
-        delay: 1.5,
-      })
+  transition(next) {
+    this.active = true
+    
+    return GSAP.timeline({
+      ease: 'Power2.in',
+      onComplete: () => this.hide(next)
+    })
+      .to(this.preloader, { 
+        duration: .02,
+        autoAlpha: 1
+      }, '0')
+      .to(this.spans, { 
+        duration: .02,
+        autoAlpha: 1,
+        skewX: '0deg',
+        y: 0
+      }, '0')
+  }
 
-      this.hidePreloader.to([this.spans, this.numberText], {
+  hide(next) {
+    return new Promise((resolve) => {   
+      let introTl = this.introHero(next)
+    
+      this.hideTl = GSAP.timeline({
+        delay: 1,
+        ease: 'power2',
         duration: 1,
-        ease: 'power2.out',
-        stagger: 0.02,
-        autoAlpha: 0,
-        y: '100%',
-        skewX: '6deg',
+        onComplete:() => {
+          introTl.play()
+        }
       })
-
-      this.hidePreloader.to(
-        this.preloader,
-        {
-          duration: 1.2,
-          ease: 'expo.out',
+        .to([this.spans, this.numberText], {
+          stagger: 0.02,
           autoAlpha: 0,
-        },
-        '-=0.2'
-      )
+          y: '100%',
+          skewX: '6deg',
+        })
+      .to(this.preloader, {
+          autoAlpha: 0,
+        }, '-=0.2')
 
-      if (this.title) {
-        this.hidePreloader.from(
-          this.title,
-          {
-            duration: 0.8,
-            ease: 'expo.out',
-            y: '10%',
-            autoAlpha: 0,
-          },
-          '-=1'
-        )
-        this.hidePreloader.from(
-          this.subtitle,
-          {
-            duration: 0.8,
-            ease: 'expo.out',
-            y: '30%',
-            autoAlpha: 0,
-          },
-          '-=0.9'
-        )
-      }
-
-      this.hidePreloader.call((_) => {
-        document.documentElement.classList.remove('--preloader')
+      this.hideTl.call((_) => {
         this.emit('completed')
-        this.hidePreloader.kill()
+        this.active = false
+        this.hideTl.kill()
       })
     })
+  }
+  
+  introHero(next) {
+    if (next) {
+      this.image = GSAP.utils.toArray(['.hero__image', '.photoshoot__hero__image'])
+      this.title = GSAP.utils.toArray(['.hero__title', '.photoshoot__hero__title'])
+      this.subtitle = GSAP.utils.toArray(['.hero__subtitle', '.photoshoot__hero__subtitle']) 
+    }
+
+    return GSAP.timeline({
+      ease: 'power2.out',
+      paused: true,
+    })
+      .from(this.image, { 
+        duration: .4,
+        scale: 1.05
+      }, '0')
+      .from(this.title, { 
+        duration: .4,
+        y: '10%',
+        autoAlpha: 0
+      }, '0')
+      .from(this.subtitle, {
+        duration: .3,
+        y: '30%',
+        autoAlpha: 0
+      }, '-=0.3')
   }
 }

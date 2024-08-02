@@ -22,35 +22,20 @@ export default class Hero {
           // markers: true,
           onLeave: () => (this.hero.style.pointerEvents = 'none'),
           onEnterBack: () => (this.hero.style.pointerEvents = 'unset'),
-          // onLeave: () => console.log('TODO: Show menu. Emit: "toggleMenu" [?]'),
-          // onEnterBack: () => console.log('TODO: Hide menu'),
         },
       })
-      .to(
-        this.mask,
-        {
-          // borderRadius: '0 0 +=45% +=45%',
+      .to( this.mask, {
           ease: 'power2.out',
           y: '-15%',
-        },
-        0
-      )
-      .to(
-        this.titles,
-        {
+        }, 0 )
+      .to( this.titles, {
           y: '15%',
           ease: 'linear',
-        },
-        0
-      )
-      .to(
-        this.titles,
-        {
+        }, 0 )
+      .to( this.titles, {
           autoAlpha: 0,
           ease: 'power2.out',
-        },
-        '-=0.4'
-      )
+        }, '-=0.4')
 
     return this
   }
