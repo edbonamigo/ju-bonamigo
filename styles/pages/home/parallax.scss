@@ -26,6 +26,6 @@
 
 .parallax__image {
 	@extend %cover;
-
+  will-change: transform;
 	top: -90%;
 }
