@@ -22,18 +22,24 @@ class App {
   constructor() {
     this.preloader = new Preloader()
     this.preloader.once('loaded', () => this.initSPA())
-    this.preloader.once('completed', () => lenis.start())
+    if (lenis) {
+      this.preloader.once('completed', () => lenis.start())
+    }
   }
 
   initSPA() {
     barba.hooks.beforeEnter(() => {
       lazyLoad()
 
-      // if (!this.preloader.active) {
-      //   this.preloader.onLoadedRemovePreloader()
-      // }
+      if (!this.preloader.active) {
+        this.preloader.onLoadedRemovePreloader()
+      }
       
-      lenis.scrollTo(0, { immediate: true });
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0)
+      }
     })
 
     barba.hooks.afterEnter(() => {
@@ -81,23 +87,39 @@ class App {
 /**
  * Smooth Scroll.
  */
-const lenis = new Lenis({
-  duration: 1.2,
-})
+let lenis = null
 
-function raf(time) {
-  lenis.raf(time)
+if (!ScrollTrigger.isTouch) {
+  console.log('lenis activated')
+  lenis = new Lenis({
+    duration: 1.2,
+    touchMultiplier: 0
+  })
+  
+  function raf(time) {
+    lenis.raf(time)
+    requestAnimationFrame(raf)
+  }
   requestAnimationFrame(raf)
+  
+  lenis.on('scroll', ScrollTrigger.update)
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000)
+  })
+  
+  
+  window.lenis = lenis
+  lenis.stop()
 }
-requestAnimationFrame(raf)
 
-lenis.on('scroll', ScrollTrigger.update)
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000)
-})
+function scrollTo() {
+  if (lenis) {
+    return lenis.scrollTo('#contato')
+  }
+  return
+}
 
-window.lenis = lenis
-lenis.stop()
+window.scrollToContact = scrollTo
 
 /**
  * Entry point.
