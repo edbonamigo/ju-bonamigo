@@ -5,6 +5,7 @@
 
   @include media('<phone') {
     height: calc(85vh * 3);
+    display: none;
   }
 }
 

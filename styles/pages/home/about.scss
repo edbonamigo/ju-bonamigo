@@ -10,8 +10,9 @@
 
 	@include media('<phone') {
 		flex-flow: column;
-		padding: 15vh 10rem;
+		padding: 5vh 10rem;
 		width: 100%;
+    min-height: unset;
 	}
 }
 
