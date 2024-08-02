@@ -2,6 +2,10 @@
 	width: 100%;
 	height: calc(90vh * 3);
 	overflow: hidden;
+
+  @include media('<phone') {
+    height: calc(85vh * 3);
+  }
 }
 
 .parallax__image_wrapper {
@@ -14,6 +18,10 @@
 	&:nth-child(2) .parallax__image {
 		object-position: center 30%;
 	}
+
+  @include media('<phone') {
+    height: 95vh;
+  }
 }
 
 .parallax__image {
