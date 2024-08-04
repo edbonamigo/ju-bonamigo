@@ -75,6 +75,9 @@ class App {
         name: 'default-transition',
         leave: ({next}) => {
           this.preloader.transition(next)
+
+          let link = document.querySelector('.navigation__link--contact')
+          link.href = `.${next.url.path}#contato`
         }
       }],
 
@@ -90,7 +93,6 @@ class App {
 let lenis = null
 
 if (!ScrollTrigger.isTouch) {
-  console.log('lenis activated')
   lenis = new Lenis({
     duration: 1.2,
     touchMultiplier: 0
