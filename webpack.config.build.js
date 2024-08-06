@@ -2,6 +2,8 @@ const path = require('path')
 
 const { merge } = require('webpack-merge')
 const config = require('./webpack.config.js')
+const TerserPlugin = require('terser-webpack-plugin')
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 
 module.exports = merge(config, {
 	mode: 'production',
