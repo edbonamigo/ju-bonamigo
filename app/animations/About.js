@@ -13,30 +13,24 @@ export default class Hero {
 
   triggers() {
     this.tl = gsap
-      .timeline({
-        scrollTrigger: {
-          trigger: this.about,
-          start: 'top center',
-          end: 'center 30%',
-          toggleActions: 'play complete complete reverse',
-          // markers: true,
-        },
-      })
-      .fromTo(
-        [this.image, this.text],
-        {
+      .timeline({ scrollTrigger: {
+        trigger: this.about,
+        start: 'top center',
+        end: 'center 30%',
+        toggleActions: 'play complete complete reverse',
+        // markers: true,
+      }})
+      .fromTo([this.image, this.text], {
           duration: .6,
           autoAlpha: 0,
           x: '4%',
           ease: 'expo.out',
-        },
-        {
+        }, {
           duration: .6,
           autoAlpha: 1,
           x: '0',
           stagger: 0.2, // apply stagger here
-        }
-      )
+        })
 
     return this
   }

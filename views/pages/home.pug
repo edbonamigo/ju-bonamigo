@@ -18,11 +18,12 @@ block content
 			
 			.niches_wrapper(id=niche.uid)
 				a.niches__link(href=`/${niche.uid}` draggable="false")
+					h3.niches__link__title.--mobile=niche.data.title.replace('_', ' ')
 					ul.niches__list
 						each image in niche.images
 							li.niches__item
 								.niches__item__image_wrapper
 									img.niches__item__image(data-lazy="img" data-src=image.url alt=image.alt draggable="false")
-					h3.niches__link__title
+					h3.niches__link__title.--desktop
 						each title in niche.data.title.split(' ')
 							span=title.replace('_', ' ')						

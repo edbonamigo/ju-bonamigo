@@ -1,4 +1,3 @@
-import Lenis from '@studio-freight/lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
@@ -28,75 +27,78 @@ export default class HomeNiches {
   triggers() {
     this.niches.forEach((niche, index) => {
       this.nicheImages = niche.querySelectorAll('.niches__item')
-      this.nicheTitle = niche.querySelector('.niches__link__title')
+      this.nicheTitle = niche.querySelector('.niches__link__title.--desktop')
       this.spans = niche.querySelectorAll('span')
 
-      this.imagesSlide = gsap.timeline({
-        scrollTrigger: {
-          trigger: niche,
-          start: 'top bottom',
-          end: '70% top',
-          scrub: true,
-        },
-      })
-
-      this.nicheImages.forEach((image, index) => {
-        if (index <= 2) {
-          const randomY = this._randomY(index)
-
-          this.imagesSlide.fromTo( image, 
-            { x: '30%', yPercent: randomY }, 
-            { x: '-10%', yPercent: -randomY }, 0)
-        }
-      })    
-
-      this.titlesIn = gsap
-        .timeline({
-          scrollTrigger: {
+      if (!ScrollTrigger.isTouch) {
+        this.imagesSlide = gsap
+          .timeline({ scrollTrigger: {
             trigger: niche,
-            start: '0% 70%',
-            end: '25% 70%',
+            start: 'top bottom',
+            end: '70% top',
             scrub: true,
           },
         })
-        .fromTo(
-          this.spans,
-          {
-            autoAlpha: '0',
-            x: '5%',
-            y: '15%',
+
+        this.nicheImages.forEach((image, index) => {
+          if (index <= 2) {
+            const randomY = this._randomY(index)
+
+            this.imagesSlide.fromTo( image, 
+              { x: '30%', yPercent: randomY }, 
+              { x: '-10%', yPercent: -randomY }, 0)
+          }
+        })
+      } else {
+        this.imagesSlide = gsap
+          .timeline({ scrollTrigger: {
+            trigger: niche,
+            duration: 3,
+            start: 'top 85%',
+            end: '70% top',
+            toggleActions: 'play complete complete reverse',
           },
-          {
-            autoAlpha: '1',
-            x: '0',
-            y: '0',
-          },
-          0
-        )
+        }).fromTo( this.nicheImages, 
+          { y: '10%'}, 
+          { y: '0', stagger: .1}, 0)
+
+      }
+      
+      this.titlesIn = gsap
+        .timeline({ scrollTrigger: {
+          trigger: niche,
+          start: '0% 70%',
+          end: '25% 70%',
+          scrub: true,
+        },
+      })
+      .fromTo( this.spans, {
+          autoAlpha: '0',
+          x: '5%',
+          y: '15%',
+        }, {
+          autoAlpha: '1',
+          x: '0',
+          y: '0',
+        }, 0)
 
       this.titlesOut = gsap
-        .timeline({
-          scrollTrigger: {
+        .timeline({ scrollTrigger: {
             trigger: niche,
             start: '0% top',
             end: '25% top',
             scrub: true,
           },
         })
-        .fromTo(
-          this.nicheTitle,
-          {
+        .fromTo( this.nicheTitle, {
             autoAlpha: '1',
             y: '0',
             x: '0',
-          },
-          {
+          }, {
             autoAlpha: '0',
             y: '-10%',
             x: '3%',
-          },
-          0
-        )
+          }, 0)
 
       this.tweens.push(this.imagesSlide)
       this.tweens.push(this.titlesIn)

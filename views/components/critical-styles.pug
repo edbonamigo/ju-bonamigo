@@ -104,14 +104,23 @@ style(type='text/css').
 		animation-fill-mode: forwards;
 	}
 
-		@media(max-width: 768px) {
-			.preloader__text {
-				font-size: 10rem;
-			}
-			.preloader__number {
-				font-size: 6rem;
-				bottom: 10rem;
-			}
+	@media(max-width: 768px) {
+		.preloader__text {
+			font-size: 10rem;
+		}
+		.preloader__number {
+			font-size: 6rem;
+			bottom: 10rem;
+		}
+	}
+
+	 @media(max-width: 1024px) {
+		.preloader__text {
+			margin-top: -20rem;
+		}
+		.preloader__number {
+			bottom: 25rem;
+		}
 	}
 
 	@keyframes fade-in {
