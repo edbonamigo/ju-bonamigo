@@ -34,8 +34,8 @@ export default class Preloader extends EventEmitter {
     this.numberText.innerHTML = `${percentLoaded}%`
 
     if (percentLoaded === 100) {
-      // this.hide()
-      // this.emit('loaded')
+      this.hide()
+      this.emit('loaded')
     }
   }
 
