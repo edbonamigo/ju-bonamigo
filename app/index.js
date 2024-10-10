@@ -34,7 +34,7 @@ class App {
       if (!this.preloader.active) {
         this.preloader.onLoadedRemovePreloader()
       }
-      
+
       if (lenis) {
         lenis.scrollTo(0, { immediate: true });
       } else {
@@ -60,11 +60,11 @@ class App {
       views: [
         {
           namespace: 'home',
-          beforeEnter:({ next }) => {
+          beforeEnter: ({ next }) => {
             this.hero = new Hero(next.container).triggers()
             this.niches = new Niches(next.container).triggers()
           },
-          beforeLeave:() => {
+          beforeLeave: () => {
             this.hero = this.hero.destroy()
             this.niches = this.niches.destroy()
           },
@@ -73,7 +73,7 @@ class App {
 
       transitions: [{
         name: 'default-transition',
-        leave: ({next}) => {
+        leave: ({ next }) => {
           this.preloader.transition(next)
 
           let link = document.querySelector('.navigation__link--contact')
@@ -97,19 +97,19 @@ if (!ScrollTrigger.isTouch) {
     duration: 1.2,
     touchMultiplier: 0
   })
-  
+
   function raf(time) {
     lenis.raf(time)
     requestAnimationFrame(raf)
   }
   requestAnimationFrame(raf)
-  
+
   lenis.on('scroll', ScrollTrigger.update)
   gsap.ticker.add((time) => {
     lenis.raf(time * 1000)
   })
-  
-  
+
+
   window.lenis = lenis
   lenis.stop()
 }
