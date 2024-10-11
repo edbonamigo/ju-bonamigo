@@ -46,6 +46,10 @@ module.exports = {
           from: './assets',
           to: '',
         },
+        {
+          from: './robots.txt',
+          to: '',
+        },
       ],
     }),
     new MiniCssExtractPlugin({

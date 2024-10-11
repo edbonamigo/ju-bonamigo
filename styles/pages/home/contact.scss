@@ -7,7 +7,7 @@
   width: 100%;
   height: 80vh;
 
-  @include media('<phone') {
+  @include media('<tablet') {
     align-items: center;
     justify-content: flex-end;
   }
@@ -30,7 +30,7 @@
   z-index: z('content');
   transform: scaleX(-1);
 
-  @include media('<phone') {
+  @include media('<tablet') {
     object-position: 50% 0;
   }
 }
@@ -42,7 +42,7 @@
   z-index: z('content');
   transform: translateY(-5vh);
 
-  @include media('<phone') {
+  @include media('<tablet') {
     height: 30rem;
     text-align: left;
     margin-bottom: 7rem;
@@ -51,7 +51,7 @@
 
 
 .contact__link:last-child {
-  @include media('<phone') {
+  @include media('<tablet') {
     margin-bottom: 18vh;
   }
 }
@@ -80,6 +80,6 @@
   margin-left: 10rem;
 }
 
-.--phone .contact__link__text {
+.--tablet .contact__link__text {
   margin-left: 5rem;
 }
