@@ -1,19 +1,18 @@
-$spring-wood: #fcfbf8;
-$dawn-pink: #f2ebe1;
+$spring-wood: #FCFBF8;
 // $river-bed: #5b402f;
 $river-bed: #425360;
-$cloud: #cdc9c4;
+$cloud: #B8B3AD;
 
 $font-primary: 'Branch';
 
 $ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
 $z-indexes: (
-	'hero-titles',
-	'hero-content',
-	'navigation',
-	'titles',
-	'content',
-	'noise',
-	'preloader'
+  'hero-titles',
+  'hero-content',
+  'navigation',
+  'titles',
+  'content',
+  'noise',
+  'preloader'
 );

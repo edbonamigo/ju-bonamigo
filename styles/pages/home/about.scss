@@ -1,7 +1,7 @@
 .about {
   @extend %flex-center;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
 
   margin: 0 auto;
   margin-top: 10rem;
@@ -61,10 +61,10 @@
   @extend %text-200;
   mix-blend-mode: normal;
   color: $river-bed;
-  opacity: .2;
-  font-size: 38rem;
+  opacity: .8;
+  font-size: 20rem;
   position: absolute;
-  top: 0;
+  top: 2rem;
   right: -2%;
   z-index: 0;
 

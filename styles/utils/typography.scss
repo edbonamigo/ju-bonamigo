@@ -1,6 +1,6 @@
 %text-200 {
   font-size: 20rem;
-  color: $dawn-pink;
+  color: $spring-wood;
   mix-blend-mode: screen;
   z-index: z('content');
 
@@ -11,7 +11,7 @@
 
 %text-175 {
   font-size: 17.5rem;
-  color: $dawn-pink;
+  color: $spring-wood;
   mix-blend-mode: screen;
   z-index: z('content');
 
@@ -22,7 +22,7 @@
 
 %text-150 {
   font-size: calc(4rem*1.618*1.618*1.618);
-  color: $dawn-pink;
+  color: $spring-wood;
   mix-blend-mode: screen;
   z-index: z('content');
 
@@ -33,7 +33,7 @@
 
 %text-75 {
   font-size: 7.5rem;
-  color: $dawn-pink;
+  color: $spring-wood;
   z-index: z('content');
 
   @include media('<phone') {
@@ -43,7 +43,7 @@
 
 %text-50 {
   font-size: 5rem;
-  color: $dawn-pink;
+  color: $spring-wood;
   mix-blend-mode: screen;
   z-index: z('content');
 
@@ -72,7 +72,7 @@
 
 %text-20 {
   font-size: 2rem;
-  color: $dawn-pink;
+  color: $spring-wood;
   mix-blend-mode: screen;
   z-index: z('content');
 
