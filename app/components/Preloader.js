@@ -41,16 +41,17 @@ export default class Preloader extends EventEmitter {
 
   transition(next) {
     this.active = true
-    
+    console.log(next.container)
+
     return GSAP.timeline({
       ease: 'Power2.in',
       onComplete: () => this.hide(next)
     })
-      .to(this.preloader, { 
-        duration: .02,
+      .to(this.preloader, {
+        duration: .1,
         autoAlpha: 1
       }, '0')
-      .to(this.spans, { 
+      .to(this.spans, {
         duration: .02,
         autoAlpha: 1,
         skewX: '0deg',
@@ -59,14 +60,14 @@ export default class Preloader extends EventEmitter {
   }
 
   hide(next) {
-    return new Promise((resolve) => {   
+    return new Promise((resolve) => {
       let introTl = this.introHero(next)
-    
+
       this.hideTl = GSAP.timeline({
         delay: 1,
         ease: 'power2',
         duration: 1,
-        onComplete:() => {
+        onComplete: () => {
           introTl.play()
         }
       })
@@ -76,7 +77,7 @@ export default class Preloader extends EventEmitter {
           y: '100%',
           skewX: '6deg',
         })
-      .to(this.preloader, {
+        .to(this.preloader, {
           autoAlpha: 0,
         }, '-=0.2')
 
@@ -87,23 +88,23 @@ export default class Preloader extends EventEmitter {
       })
     })
   }
-  
+
   introHero(next) {
     if (next) {
       this.image = GSAP.utils.toArray(['.hero__image', '.photoshoot__hero__image'])
       this.title = GSAP.utils.toArray(['.hero__title', '.photoshoot__hero__title'])
-      this.subtitle = GSAP.utils.toArray(['.hero__subtitle', '.photoshoot__hero__subtitle']) 
+      this.subtitle = GSAP.utils.toArray(['.hero__subtitle', '.photoshoot__hero__subtitle'])
     }
 
     return GSAP.timeline({
       ease: 'power2.out',
       paused: true,
     })
-      .from(this.image, { 
+      .from(this.image, {
         duration: .4,
         scale: 1.05
       }, '0')
-      .from(this.title, { 
+      .from(this.title, {
         duration: .4,
         y: '10%',
         autoAlpha: 0

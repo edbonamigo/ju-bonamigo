@@ -10,10 +10,10 @@
   margin-bottom: 10vh;
 
   @include media('<tablet') {
-    height: 70vh;
+    height: 60vh;
     margin-bottom: 0;
     padding: 5vh 0;
-    height: 50vh;
+    transform: translateX(-4%);
   }
 }
 
@@ -48,6 +48,7 @@
   @include media('<desktop') {
     font-size: calc(4rem*1.618*1.618);
   }
+
   @include media('>desktop') {
     font-size: calc(4rem*1.618*1.618);
   }
@@ -69,8 +70,10 @@
     font-size: 13rem !important;
   }
 }
+
 .niches__link__title.--desktop {
   display: none;
+
   @include media('>tablet') {
     display: flex;
   }

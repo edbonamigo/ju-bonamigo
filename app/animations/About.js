@@ -7,30 +7,33 @@ export default class Hero {
   constructor() {
     this.about = document.querySelector('.about')
     this.image = document.querySelector('.about__image_wrapper')
+    this.title = gsap.utils.toArray('.about__title')
     this.text = gsap.utils.toArray('.about__text p')
     this.tl = undefined
   }
 
   triggers() {
     this.tl = gsap
-      .timeline({ scrollTrigger: {
-        trigger: this.about,
-        start: 'top center',
-        end: 'center 30%',
-        toggleActions: 'play complete complete reverse',
-        // markers: true,
-      }})
+      .timeline({
+        scrollTrigger: {
+          trigger: this.about,
+          start: 'top center',
+          end: 'center 30%',
+          toggleActions: 'play complete complete reverse',
+          // markers: true,
+        }
+      })
       .fromTo([this.image, this.text], {
-          duration: .6,
-          autoAlpha: 0,
-          x: '4%',
-          ease: 'expo.out',
-        }, {
-          duration: .6,
-          autoAlpha: 1,
-          x: '0',
-          stagger: 0.2, // apply stagger here
-        })
+        duration: .6,
+        autoAlpha: 0,
+        x: '4%',
+        ease: 'expo.out',
+      }, {
+        duration: .6,
+        autoAlpha: 1,
+        x: '0',
+        stagger: 0.2, // apply stagger here
+      })
 
     return this
   }

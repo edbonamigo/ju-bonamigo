@@ -4,15 +4,15 @@
   align-items: center;
 
   margin: 0 auto;
-  margin-top: 10rem;
+  margin-top: 5rem;
   min-height: 100vh;
   width: 120rem;
-  padding: 26rem 0;
+  padding: 17rem 0;
   position: relative;
 
   @include media('<tablet') {
     flex-flow: column;
-    padding: 10vh 10rem 5vh;
+    padding: 15vh 10rem 5vh;
     width: 100%;
     min-height: unset;
   }
@@ -62,14 +62,14 @@
   mix-blend-mode: normal;
   color: $river-bed;
   opacity: .8;
-  font-size: 20rem;
+  font-size: 14rem;
   position: absolute;
   top: 2rem;
   right: -2%;
   z-index: 0;
 
   @include media('<tablet') {
-    font-size: 40rem;
+    font-size: 17rem;
     right: unset;
     left: 5%;
   }

@@ -26,6 +26,19 @@ style(type='text/css').
 		overflow-x: hidden;
 	}
 
+	html:after {
+		content: "";
+		position: fixed;
+		width: 100vw;
+		height: 100vh;
+		top: 0;
+		left: 0;
+		border: 6px solid #b3aea8;
+		z-index: 100;
+		pointer-events: none;
+		user-select: none;
+	}
+
 	@media(max-width: 1024px) and (min-width: 768px) {
 		html {
 			font-size: calc(100vw / 1120 * 10);
