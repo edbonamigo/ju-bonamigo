@@ -47,7 +47,7 @@ export default class Preloader extends EventEmitter {
       onComplete: () => this.hide(next)
     })
       .to(this.preloader, {
-        duration: .05,
+        duration: .02,
         autoAlpha: 1
       }, '0')
       .to(this.spans, {
