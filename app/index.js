@@ -74,7 +74,6 @@ class App {
       transitions: [{
         name: 'default-transition',
         leave: ({ next }) => {
-          const done = this.async()
           this.preloader.transition(next)
 
           let link = document.querySelector('.navigation__link--contact')

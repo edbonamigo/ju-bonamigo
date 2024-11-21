@@ -41,14 +41,13 @@ export default class Preloader extends EventEmitter {
 
   transition(next) {
     this.active = true
-    console.log(next.container)
 
     return GSAP.timeline({
       ease: 'Power2.in',
       onComplete: () => this.hide(next)
     })
       .to(this.preloader, {
-        duration: .1,
+        duration: .05,
         autoAlpha: 1
       }, '0')
       .to(this.spans, {
