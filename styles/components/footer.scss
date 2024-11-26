@@ -1,25 +1,29 @@
 .footer {
-	width: 100%;
-	padding: 2rem 3rem;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	display: flex;
-	justify-content: space-between;
-	align-items: baseline;
+  width: 100%;
+  padding: 2rem 3rem;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  @include tablet {
+    padding: 5rem;
+  }
 }
 
 .footer__author {
-	display: flex;
+  display: flex;
 }
 
 .footer__copyright {
-	z-index: z('content');
+  z-index: z('content');
 }
 
 .footer__author__text,
 .footer__author__link,
 .footer__copyright__text {
-	@extend %text-20;
-	margin-right: 0.6ch;
+  @extend %text-20;
+  margin-right: 0.6ch;
 }
