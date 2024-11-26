@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: baseline;
 
-  @include tablet {
+  @include media('<tablet') {
     padding: 5rem;
   }
 }

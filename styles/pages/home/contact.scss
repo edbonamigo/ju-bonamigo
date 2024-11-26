@@ -5,7 +5,7 @@
   justify-content: flex-start;
   position: relative;
   width: 100%;
-  height: 80vh;
+  height: 74vh;
 
   @include media('<tablet') {
     align-items: center;
@@ -36,7 +36,7 @@
 }
 
 .contact__link {
-  height: 25rem;
+  height: 20rem;
   margin: 0 7vw;
   text-align: left;
   z-index: z('content');
@@ -78,7 +78,7 @@
 }
 
 .--social-media .contact__link__text {
-  margin-left: 10rem;
+  margin-left: 25rem;
 }
 
 .--tablet .contact__link__text {
