@@ -6,6 +6,7 @@ import barba from '@barba/core'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
+ScrollTrigger.normalizeScroll(true)
 
 import Preloader from 'components/Preloader'
 import lazyLoad from 'utils/lazy-load'
